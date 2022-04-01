@@ -1,0 +1,475 @@
+* {
+  font-family: sans-serif;
+  word-break:keep-all;
+}
+body {
+  background-color: #6593A6;
+  margin: 0;
+}
+input[name*="test_tab"] {
+  display: none;
+}
+header {
+  text-align: center;
+  font-size: 0;
+  z-index: 1;
+}
+header h1 {
+  color: #F2F2F2;
+  text-shadow: 0px 0px 10px rgb(80, 80, 80);
+  font-size: 3vh;
+  margin: 0;
+  padding: 20px;
+}
+header nav {
+  display: inline-flex;
+  width: 80%;
+  gap: 0.3vw;
+}
+header nav label {
+  border-radius: 10px 10px 0px 0px;
+  background-color: #F2CF63;
+	flex-grow: 1;
+  vertical-align: top;
+  height: 3vh;
+  padding: 1vh 0;
+  font-size: 1.4vh;
+  font-weight: bold;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: border 0.1s;
+  box-shadow: inset 0px 0px 100px rgba(100, 100, 255, 0.3);
+  transition: box-shadow 0.3s;
+}
+#test_tab01:checked ~ header nav label:nth-child(1) {
+  box-shadow: none;
+}
+#test_tab02:checked ~ header nav label:nth-child(2) {
+  box-shadow: none;
+}
+#test_tab03:checked ~ header nav label:nth-child(3) {
+  box-shadow: none;
+}
+#test_tab04:checked ~ header nav label:nth-child(4) {
+  box-shadow: none;
+}
+#test_tab05:checked ~ header nav label:nth-child(5) {
+  box-shadow: none;
+}
+main {
+  margin: auto;
+  font-size: 0;
+  width: 80%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+main section {
+  width: 100%;
+  background-color: #F2CF63;
+  padding: 5vh 3vw 5vh;
+  vertical-align: top;
+  font-size: 1.2vh;
+  display: inline-block;
+  box-sizing: border-box;
+  white-space: normal;
+  height: 0;
+}
+
+input[name*="theory_tab"] {
+  display: none;
+}
+#theory_nav {
+  position: absolute;
+  overflow: hidden;
+  height: 0;
+}
+#theory_nav label {
+  padding: 1vh 1vw;
+  text-align: left;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+#theory_tab01:checked ~ #theory_nav label:nth-child(1) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab02:checked ~ #theory_nav label:nth-child(2) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab03:checked ~ #theory_nav label:nth-child(3) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab04:checked ~ #theory_nav label:nth-child(4) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab05:checked ~ #theory_nav label:nth-child(5) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab06:checked ~ #theory_nav label:nth-child(6) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab07:checked ~ #theory_nav label:nth-child(7) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab08:checked ~ #theory_nav label:nth-child(8) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab09:checked ~ #theory_nav label:nth-child(9) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab10:checked ~ #theory_nav label:nth-child(10) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab11:checked ~ #theory_nav label:nth-child(11) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#theory_tab12:checked ~ #theory_nav label:nth-child(12) {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+#theory {
+  background-color: rgb(248, 242, 255);
+  width: 100%;
+  vertical-align: top;
+}
+#theory .theory-item .chapter>h1 {
+  font-size: 40px;
+  font-family: fantasy;
+  background-color: cadetblue;
+}
+
+#theory .theory-item .chapter .page {
+  padding: 3vh 1vw;
+  text-align: left;
+}
+#theory .theory-item .chapter .page h1 {
+  font-size: 32px;
+  font-family: fantasy;
+}
+#theory .theory-item .chapter .page h2 {
+  font-size: 24px;
+  font-family: fantasy;
+}
+#theory .theory-item .chapter .page p {
+  font-size: 18px;
+}
+#theory .theory-item .chapter .page ul {
+  background-color: #58595B;
+  padding: 1vh 1vw;
+}
+#theory .theory-item .chapter .page ul li {
+  color: #F2F2F2;
+  list-style: none;
+  font-weight: bold;
+  font-size: 14px;
+  padding: 0 0;
+}
+#theory .theory-item .chapter .page table {
+  background-color: #58595B;
+}
+#theory .theory-item .chapter .page table th,
+#theory .theory-item .chapter .page table td {
+  padding: 3px 12px;
+  background-color: white;
+  font-weight: bold;
+}
+#theory .theory-item .chapter .page dl {
+  padding: 1vh 1vw;
+}
+#theory .theory-item .chapter .page dt {
+  font-family: fantasy;
+  font-weight: bold;
+  font-size: 24px;
+}
+#theory .theory-item .chapter .page dd {
+  margin-left: 1vw;
+  font-size: 18px;
+}
+.swiper {
+  width: 100%;
+  height: 63vh;
+}
+
+#slide_range {
+  width: 100%;
+  -webkit-appearance: none;
+  overflow: hidden;
+  cursor: cell;
+  transition: all 1s;
+}
+#slide_range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1px;
+  height: 3vh;
+  background-color: rgb(236, 74, 74);
+  box-shadow: -100vw 0 0 100vw rgb(216, 79, 79);
+}
+.swiper-slide {
+  text-align: center;
+  font-size: 1vh;
+  background-color: #F2C063;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+.swiper-slide details {
+  font-size: 2vh;
+  text-align: left;
+  width: 90%;
+  height: 60%;
+  font-weight: bold;
+}
+.swiper-slide details summary {
+  background-color: #58595B;
+  color: #F2F2F2;
+  font-size: 1.5vh;
+  padding: 3vh;
+  cursor: pointer;
+  list-style: none;
+}
+.swiper-slide details p {
+  height: 60%;
+  font-size: 2.3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper-slide .problem {
+  position: absolute;
+  bottom: 20%;
+  opacity: 0.7;
+}
+.swiper-slide .problem input {
+  font-size: 3vh;
+  font-weight: bold;
+  font-family: '굴림체' arial;
+  transform: rotateX(30deg);
+  box-sizing: border-box;
+  outline: none;
+}
+.swiper-slide .problem input:nth-child(2) {
+  background-color: #58595B;
+  color: white;
+  text-transform: uppercase;
+}
+
+input[name*="past_questions_tab"] {
+  display: none;
+}
+#resetButton {
+  font-size: 2vh;
+  border: 0;
+  padding: 1vh 1vw;
+  border-radius: 1vh;
+  font-weight: bold;
+  color: #F2F2F2;
+  background-color: rgba(0, 0, 0, 0);
+  cursor: pointer;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  opacity: 0.3;
+}
+#resetButton:hover {
+  opacity: 1;
+}
+#past_questions_nav {
+  display: flex;
+  justify-content:space-around;
+  margin-bottom: 5vh;
+}
+
+#past_questions_nav label {
+  font-size: 1.5vh;
+  font-weight: bold;
+  padding: 1vh 2vw;
+  background-color: rgba(0, 0, 0, 0.2);
+  transition: all 0.3s;
+  border-radius: 3px;
+}
+
+#past_questions_tab01:checked ~ #past_questions_nav label:nth-child(1) {
+  transform: translateY(1vh);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#past_questions_tab02:checked ~ #past_questions_nav label:nth-child(2) {
+  transform: translateY(1vh);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#past_questions_tab03:checked ~ #past_questions_nav label:nth-child(3) {
+  transform: translateY(1vh);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#past_questions_tab04:checked ~ #past_questions_nav label:nth-child(4) {
+  transform: translateY(1vh);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#past_questions_tab05:checked ~ #past_questions_nav label:nth-child(5) {
+  transform: translateY(1vh);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#past_questions_tab06:checked ~ #past_questions_nav label:nth-child(6) {
+  transform: translateY(1vh);
+  background-color: rgba(0, 0, 0, 0.1);
+}
+#past_questions {
+  font-size: 0;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#past_questions ol {
+  overflow: hidden;
+  font-size: 4vh;
+  display: inline-block;
+  vertical-align: top;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+  padding: 0 0 0 10vh;
+}
+#past_questions ol li {
+  font-weight: bold;
+  width: 100%;
+  height: 80vh;
+  white-space: normal;
+}
+
+
+#past_questions ol li details {
+  color: rgb(15, 15, 15);
+  font-weight: bold;
+  background-color: #F2C063;
+  margin: auto;
+  display: block;
+  text-align: left;
+  width: 100%;
+}
+
+#past_questions ol li details summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1vh;
+  font-size: 1.8vh;
+}
+#past_questions ol li details p {
+  margin: 0;
+  background-color: #F2CF63;
+  color: rgb(40, 40, 40);
+  font-weight: bold;
+  font-size: 2vh;
+  padding: 5vh 0;
+}
+#past_questions ol li details summary blockquote {
+  padding: 1.2vh;
+  background-color: #58595B;
+  color: ghostwhite;
+}
+#past_questions ol li details summary pre {
+  padding: 1.2vh;
+  background-color: #58595B;
+  color: white;
+  overflow: hidden;
+}
+#past_questions ol li details summary img {
+  display: block;
+  width: 30%;
+  filter: invert(0.8);
+}
+@media screen and (max-width: 1600px){
+  header nav {
+    width: 100%;
+  }
+  main {
+    width: 100%;
+  }
+}
+@media screen and (max-width: 1200px){ 
+  .swiper-slide details {
+    font-size: 1.2vh;
+  }
+  #past_questions ol li details p {
+    font-size: 1.8vh;
+  }
+}
+
+#past_questions_tab01:checked ~ #past_questions ol {
+  transform: translateX(0);
+}
+#past_questions_tab02:checked ~ #past_questions ol {
+  transform: translateX(-100%);
+}
+#past_questions_tab03:checked ~ #past_questions ol {
+  transform: translateX(-200%);
+}
+#past_questions_tab04:checked ~ #past_questions ol {
+  transform: translateX(-300%);
+}
+#past_questions_tab05:checked ~ #past_questions ol {
+  transform: translateX(-400%);
+}
+#past_questions_tab06:checked ~ #past_questions ol {
+  transform: translateX(-500%);
+}
+#test_tab01:checked ~ main section {
+  transform: translateX(0);
+}
+#test_tab02:checked ~ main section {
+  transform: translateX(-100%);
+}
+#test_tab03:checked ~ main section {
+  transform: translateX(-200%);
+}
+#test_tab04:checked ~ main section {
+  transform: translateX(-300%);
+}
+#test_tab05:checked ~ main section {
+  transform: translateX(-400%);
+}
+#test_tab01:checked ~ main section:nth-child(1) {
+  height: auto;
+}
+#test_tab02:checked ~ main section:nth-child(2) {
+  height: auto;
+}
+#test_tab03:checked ~ main section:nth-child(3) {
+  height: auto;
+}
+#test_tab04:checked ~ main section:nth-child(4) {
+  height: auto;
+}
+#test_tab05:checked ~ main section:nth-child(5) {
+  height: auto;
+}
+footer {
+  background-color: #6593A6;
+  height: 10vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+footer a {
+  text-decoration: none;
+  color: white;
+}
