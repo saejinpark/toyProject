@@ -9908,12 +9908,12 @@
         form.appendChild(textBox);
         form.appendChild(submit);
         const details = i.querySelector("details");
-        details.open = true
+        details.open = true;
         const answer = i
-        .querySelector("details")
-        .querySelector("p")
-        .innerText.trim();
-        details.open = false
+          .querySelector("details")
+          .querySelector("p")
+          .innerText.trim();
+        details.open = false;
         form.addEventListener("submit", function (e) {
           e.preventDefault();
           const inputAnswer = e.target.querySelector(".answerInput").value;

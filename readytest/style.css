@@ -1,9 +1,9 @@
 * {
   font-family: sans-serif;
-  word-break:keep-all;
+  word-break: keep-all;
 }
 body {
-  background-color: #6593A6;
+  background-color: #6593a6;
   margin: 0;
 }
 input[name*="test_tab"] {
@@ -15,7 +15,7 @@ header {
   z-index: 1;
 }
 header h1 {
-  color: #F2F2F2;
+  color: #f2f2f2;
   text-shadow: 0px 0px 10px rgb(80, 80, 80);
   font-size: 3vh;
   margin: 0;
@@ -28,8 +28,8 @@ header nav {
 }
 header nav label {
   border-radius: 10px 10px 0px 0px;
-  background-color: #F2CF63;
-	flex-grow: 1;
+  background-color: #f2cf63;
+  flex-grow: 1;
   vertical-align: top;
   height: 3vh;
   padding: 1vh 0;
@@ -68,7 +68,7 @@ main {
 
 main section {
   width: 100%;
-  background-color: #F2CF63;
+  background-color: #f2cf63;
   padding: 5vh 3vw 5vh;
   vertical-align: top;
   font-size: 1.2vh;
@@ -135,7 +135,7 @@ input[name*="theory_tab"] {
   width: 100%;
   vertical-align: top;
 }
-#theory .theory-item .chapter>h1 {
+#theory .theory-item .chapter > h1 {
   font-size: 40px;
   font-family: fantasy;
   background-color: cadetblue;
@@ -157,18 +157,18 @@ input[name*="theory_tab"] {
   font-size: 18px;
 }
 #theory .theory-item .chapter .page ul {
-  background-color: #58595B;
+  background-color: #58595b;
   padding: 1vh 1vw;
 }
 #theory .theory-item .chapter .page ul li {
-  color: #F2F2F2;
+  color: #f2f2f2;
   list-style: none;
   font-weight: bold;
   font-size: 14px;
   padding: 0 0;
 }
 #theory .theory-item .chapter .page table {
-  background-color: #58595B;
+  background-color: #58595b;
 }
 #theory .theory-item .chapter .page table th,
 #theory .theory-item .chapter .page table td {
@@ -210,7 +210,7 @@ input[name*="theory_tab"] {
 .swiper-slide {
   text-align: center;
   font-size: 1vh;
-  background-color: #F2C063;
+  background-color: #f2c063;
 
   /* Center slide text vertically */
   display: -webkit-box;
@@ -234,16 +234,15 @@ input[name*="theory_tab"] {
   font-weight: bold;
 }
 .swiper-slide details summary {
-  background-color: #58595B;
-  color: #F2F2F2;
-  font-size: 1.5vh;
+  background-color: #58595b;
+  color: #f2f2f2;
+  font-size: 34px;
   padding: 3vh;
   cursor: pointer;
   list-style: none;
 }
 .swiper-slide details p {
-  height: 60%;
-  font-size: 2.3vh;
+  font-size: 28px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -262,13 +261,13 @@ input[name*="theory_tab"] {
 .swiper-slide .problem input {
   font-size: 3vh;
   font-weight: bold;
-  font-family: '굴림체' arial;
+  font-family: "굴림체" arial;
   transform: rotateX(30deg);
   box-sizing: border-box;
   outline: none;
 }
 .swiper-slide .problem input:nth-child(2) {
-  background-color: #58595B;
+  background-color: #58595b;
   color: white;
   text-transform: uppercase;
 }
@@ -282,7 +281,7 @@ input[name*="past_questions_tab"] {
   padding: 1vh 1vw;
   border-radius: 1vh;
   font-weight: bold;
-  color: #F2F2F2;
+  color: #f2f2f2;
   background-color: rgba(0, 0, 0, 0);
   cursor: pointer;
   position: absolute;
@@ -296,7 +295,7 @@ input[name*="past_questions_tab"] {
 }
 #past_questions_nav {
   display: flex;
-  justify-content:space-around;
+  justify-content: space-around;
   margin-bottom: 5vh;
 }
 
@@ -355,11 +354,10 @@ input[name*="past_questions_tab"] {
   white-space: normal;
 }
 
-
 #past_questions ol li details {
   color: rgb(15, 15, 15);
   font-weight: bold;
-  background-color: #F2C063;
+  background-color: #f2c063;
   margin: auto;
   display: block;
   text-align: left;
@@ -374,7 +372,7 @@ input[name*="past_questions_tab"] {
 }
 #past_questions ol li details p {
   margin: 0;
-  background-color: #F2CF63;
+  background-color: #f2cf63;
   color: rgb(40, 40, 40);
   font-weight: bold;
   font-size: 2vh;
@@ -382,12 +380,12 @@ input[name*="past_questions_tab"] {
 }
 #past_questions ol li details summary blockquote {
   padding: 1.2vh;
-  background-color: #58595B;
+  background-color: #58595b;
   color: ghostwhite;
 }
 #past_questions ol li details summary pre {
   padding: 1.2vh;
-  background-color: #58595B;
+  background-color: #58595b;
   color: white;
   overflow: hidden;
 }
@@ -396,7 +394,7 @@ input[name*="past_questions_tab"] {
   width: 30%;
   filter: invert(0.8);
 }
-@media screen and (max-width: 1600px){
+@media screen and (max-width: 1600px) {
   header nav {
     width: 100%;
   }
@@ -404,7 +402,7 @@ input[name*="past_questions_tab"] {
     width: 100%;
   }
 }
-@media screen and (max-width: 1200px){ 
+@media screen and (max-width: 1200px) {
   .swiper-slide details {
     font-size: 1.2vh;
   }
@@ -462,7 +460,7 @@ input[name*="past_questions_tab"] {
   height: auto;
 }
 footer {
-  background-color: #6593A6;
+  background-color: #6593a6;
   height: 10vh;
   display: flex;
   justify-content: center;
