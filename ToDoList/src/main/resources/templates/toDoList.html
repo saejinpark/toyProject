@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>TODOLIST</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="/css/style.css" rel="stylesheet" />
+  </head>
+  <body>
+    <header>
+      <h1>TODOLIST</h1>
+    </header>
+    <main>
+      <ul class="finishedList">
+        <li
+          th:each="toDo : ${toDoList}"
+          th:if="${toDo.finishStatus  == 'FINISH'}"
+        >
+          <span th:text="${toDo.sentence}"></span>
+          <a class="returnButton" th:href="@{'/return/' + ${toDo.id}}"
+            >return</a
+          >
+        </li>
+      </ul>
+      <ul class="toDoList">
+        <li
+          th:each="toDo : ${toDoList}"
+          th:if="${toDo.finishStatus == 'TODO' }"
+        >
+          <span th:text="${toDo.sentence}"></span>
+          <a class="deleteButton" th:href="@{'/delete/' + ${toDo.id}}"
+            >delete</a
+          >
+          <a class="finishButton" th:href="@{'/finish/' + ${toDo.id}}"
+            >finish</a
+          >
+        </li>
+      </ul>
+      <form action="/" method="post" th:Object="${toDoForm}">
+        <input type="text" th:field="*{sentence}" />
+        <button>보내기</button>
+      </form>
+    </main>
+    <footer>
+      <address>주소</address>
+    </footer>
+  </body>
+</html>

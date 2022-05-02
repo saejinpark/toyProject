@@ -1,0 +1,147 @@
+* {
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+body {
+  margin: 0;
+}
+header {
+  height: 5vh;
+  background-color: deepskyblue;
+}
+header h1 {
+  margin: 0;
+  width: 1024px;
+  margin: auto;
+}
+
+main {
+  width: 1024px;
+  height: 90vh;
+  margin: auto;
+}
+
+main ul {
+  display: block;
+  padding: 20px;
+  border: 3px solid black;
+  overflow-y: scroll;
+}
+
+main .finishedList {
+  height: 90vh;
+  width: 50%;
+  float: left;
+  margin: 0;
+  border: 3px solid black;
+}
+main .toDoList {
+  height: 80vh;
+  width: 50%;
+  float: left;
+  margin: 0;
+  background-color: antiquewhite;
+}
+main ul li {
+  display: block;
+  height: 60px;
+  border: 3px solid black;
+  margin: 10px 0;
+}
+
+main ul li span {
+  display: flex;
+  padding: 5px;
+  align-items: center;
+  float: left;
+  border: 3px solid black;
+}
+
+main ul li a {
+  display: block;
+  float: left;
+  border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+}
+
+main .finishedList li span {
+  border: 3px solid black;
+  height: 100%;
+  width: 85%;
+  padding: 5px;
+  background-color: aqua;
+}
+
+main .toDoList li span {
+  border: 3px solid black;
+  height: 100%;
+  width: 70%;
+  padding: 5px;
+  display: flex;
+  background-color: aqua;
+}
+
+main ul li::after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
+main ul li .returnButton {
+  float: right;
+  height: 100%;
+  width: 15%;
+  background-color: yellow;
+  border: 3px solid black;
+}
+main ul li .deleteButton {
+  float: right;
+  width: 15%;
+  height: 100%;
+  background-color: crimson;
+  border: 3px solid black;
+}
+main ul li .finishButton {
+  float: right;
+  height: 100%;
+  width: 15%;
+  background-color: greenyellow;
+  border: 3px solid black;
+}
+main form {
+  height: 10vh;
+  width: 50%;
+  float: left;
+  padding: 0;
+  margin: 0;
+  background-color: rgba(0, 0, 0, 0.1);
+  border: 3px solid black;
+}
+
+main form {
+  padding: 20px;
+}
+main form input {
+  float: left;
+  width: 80%;
+  height: 100%;
+  border: 3px solid black;
+}
+main form button {
+  width: 20%;
+  height: 100%;
+  border: 3px solid black;
+  background-color: cornflowerblue;
+}
+
+footer {
+  height: 5vh;
+  background-color: deepskyblue;
+}
