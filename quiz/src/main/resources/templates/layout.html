@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <head th:replace="fragments/head :: head"> </head>
+  <body>
+    <th:block th:if="${session.login}">
+      <input type="radio" name="navbar_trigger" id="navbar_trigger01" />
+      <input type="radio" name="navbar_trigger" id="navbar_trigger02" />
+    </th:block>
+    <header th:replace="fragments/header :: header" />
+    <header th:replace="fragments/aside :: aside" />
+    <main th:replace="( 'fragments/main/' + ${page} ) :: main" />
+    <footer th:replace="fragments/footer :: footer" />
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script th:inline="javascript">
+      window.onload = () => {
+          const message = [[${session.message}]];
+          if(message !== null) {
+              swal(message);
+              fetch("/message_reset", {
+                method: "GET",
+              });
+          }
+          const navbarCheck = [[${session.navbarCheck}]];
+          if(navbarCheck != null){
+              const navbarInput = document.querySelectorAll("input[name='navbar_trigger']");
+              navbarInput[navbarCheck].checked = true;
+          }
+      }
+    </script>
+    <th:block th:replace="( 'fragments/script/' + ${page} ) :: script" />
+    <!--    <script defer>-->
+    <!--      const loading = document.querySelector(".loading");-->
+    <!--      loading.classList.add("blind");-->
+    <!--    </script>-->
+  </body>
+</html>

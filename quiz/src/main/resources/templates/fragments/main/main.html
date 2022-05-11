@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <main class="main">
+    <div class="inner">
+      <section class="todolist">
+        <h2 class="blind">todolist</h2>
+        <article class="finish">
+          <h3>finish</h3>
+          <ul>
+            <li th:each="toDo : ${toDoList}"  th:if="${toDo.todoStatus.name() == 'FINISHED'}">
+              <span th:text="${toDo.sentence}">sentence</span>
+              <a th:href="@{'/todo/return/' + ${toDo.id}}">RETURN</a>
+            </li>
+          </ul>
+        </article>
+        <article class="todo">
+          <h3>todo</h3>
+          <ul>
+            <li th:each="toDo : ${toDoList}" th:if="${toDo.todoStatus.name() == 'TODO'}">
+              <span th:text="${toDo.sentence}">sentence</span>
+              <a th:href="@{'/todo/finish/' + ${toDo.id}}">FINISH</a>
+              <a th:href="@{'/todo/delete/' + ${toDo.id}}">DELETE</a>
+            </li>
+          </ul>
+          <form action="/addToDoList" method="post"  th:Object="${toDoForm}">
+            <input type="text" th:field="*{sentence}"  autocomplete="off"/>
+            <button>➕</button>
+          </form>
+        </article>
+      </section>
+      <section class="quiz">
+
+      </section>
+    </div>
+  </main>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<aside class="aside" th:fragment="aside">
+    <th:block th:if="${session.login}">
+        <ul class="quiz_nav">
+            <li th:each="quizSet : ${quizSetList}">
+                <label for="" th:text="${quizSet.name}">quizSetName</label>
+            </li>
+            <li>
+                <input type="checkbox" id="add_quiz_set-trigger">
+                <article class="add_quiz_set">
+                    <h3 class="blind">add Quiz set</h3>
+                    <label for="add_quiz_set-trigger">✖</label>
+                    <form action="/add/quizSet" th:Object="${quizSetForm}">
+                        <input type="text" th:field="*{name}">
+                        <button>
+                            ➕
+                        </button>
+                    </form>
+                </article>
+                <label for="add_quiz_set-trigger">➕</label>
+            </li>
+        </ul>
+    </th:block>
+</aside>

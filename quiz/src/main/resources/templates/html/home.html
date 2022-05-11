@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head th:fragment="header">
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrinkto-fit=no"
+    />
+    <!-- Custom styles for this template -->
+
+    <link href="../../static/css/reset.css" rel="stylesheet" />
+    <link href="../../static/css/reset.css" rel="stylesheet" />
+    <link href="../../static/css/global.css" rel="stylesheet" />
+    <link href="../../static/css/header.css" rel="stylesheet" />
+    <link href="../../static/css/aside.css" rel="stylesheet" />
+    <link href="../../static/css/main/main.css" rel="stylesheet" />
+    <link href="../../static/css/footer.css" rel="stylesheet" />
+
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper@8/swiper-bundle.min.css"
+    />
+    <script src="https://unpkg.com/swiper@8/swiper-bundle.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/bfafa52380.js"
+      crossorigin="anonymous"
+      defer
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Quiz Maker | home</title>
+  </head>
+  <body>
+    <input type="radio" name="navbar_trigger" id="navbar_trigger01" />
+    <input type="radio" name="navbar_trigger" id="navbar_trigger02" checked />
+    <header class="header">
+      <div class="inner">
+        <h1 class="logo">
+          <a href="/"> Quiz Maker</a>
+        </h1>
+        <ul class="top_menu">
+          <li>
+            <a href="/logout">로그아웃</a>
+          </li>
+        </ul>
+        <nav class="navbar">
+          <ul>
+            <li>
+              <label for="navbar_trigger01">ToDoList</label>
+            </li>
+            <li>
+              <label for="navbar_trigger02">Quiz</label>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+    <aside class="aside">
+      <ul class="quiz_nav">
+        <li>
+          <label for="">fdsafdsa</label>
+        </li>
+        <li>
+          <input type="checkbox" id="add_quiz_set-trigger">
+          <article class="add_quiz_set">
+            <h3 class="blind">add Quiz set</h3>
+            <label for="add_quiz_set-trigger">✖</label>
+            <form action="/add/quizSet">
+              <input type="text">
+              <button>
+                ➕
+              </button>
+            </form>
+          </article>
+          <label for="add_quiz_set-trigger">➕</label>
+        </li>
+      </ul>
+    </aside>
+    <main class="main">
+      <div class="inner">
+        <section class="todolist">
+          <h2 class="blind">todolist</h2>
+          <article class="finish">
+            <h3>finished</h3>
+            <ul>
+              <li>
+                <span>fdafdsa</span>
+                <a href="">fdsafd</a>
+              </li>
+            </ul>
+          </article>
+          <article class="todo">
+            <h3>todo</h3>
+            <ul>
+              <li>
+                <span>fdsafdasfd</span>
+                <a href="">fdasfdasfd</a>
+                <a href="">fdasfd</a>
+              </li>
+            </ul>
+            <form action="/addToDOList">
+              <input type="text" />
+              <button>➕</button>
+            </form>
+          </article>
+        </section>
+        <section class="quiz">
+          <h2 class="blind">quiz</h2>
+          <div class="quiz-swipper-container">
+
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer class="footer">
+      <div class="inner">
+        <address>popopo</address>
+      </div>
+    </footer>
+  </body>
+</html>

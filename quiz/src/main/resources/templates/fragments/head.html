@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrinkto-fit=no">
+    <!-- Custom styles for this template -->
+    <link rel="icon" type="image/png" sizes="96x96" href="/img/favicon/favicon-96x96.png">
+    <link href="/css/reset.css" rel="stylesheet" />
+    <link href="/css/global.css" rel="stylesheet" />
+    <link href="/css/header.css" rel="stylesheet" />
+    <link href="/css/aside.css" rel="stylesheet" />
+    <link th:href=" '/css/main/' + ${page}  + '.css' " rel="stylesheet">
+    <link href="/css/footer.css" rel="stylesheet" />
+    <title th:text = "'Quiz Maker | ' + ${page} ">title</title>
+</head>

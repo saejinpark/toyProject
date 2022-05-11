@@ -1,0 +1,100 @@
+.aside {
+  position: fixed;
+  width: 250px;
+  top: 20vh;
+  bottom: 15vh;
+  right: calc(50vw + 512px);
+  background-color: #dcdde1;
+  color: black;
+  padding: 30px 15px;
+  display: none;
+}
+
+.quiz_nav {
+  display: none;
+}
+
+.quiz_nav li label {
+  font-size: 24px;
+  font-weight: 700;
+  height: 50px;
+  width: 100%;
+  background-color: #353b48;
+  color: #f5f6fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quiz_nav li:nth-child(n + 2) {
+  margin-top: 15px;
+}
+
+.quiz_nav li:nth-child(9) {
+    display: none;
+}
+
+input#navbar_trigger02:checked ~ .aside {
+  display: block;
+}
+input#navbar_trigger02:checked ~ .aside .quiz_nav {
+  display: block;
+}
+
+.quiz_nav #add_quiz_set-trigger {
+  display: none;
+}
+
+.quiz_nav .add_quiz_set {
+  position: fixed;
+  margin: auto;
+  top: 20vh;
+  bottom: 15vh;
+  width: 984px;
+  left: 0;
+  right: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(4px);
+}
+
+.quiz_nav #add_quiz_set-trigger:checked + .add_quiz_set {
+  display: flex;
+}
+
+.quiz_nav .add_quiz_set label {
+  width: auto;
+  padding: 10px 15px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: transparent;
+}
+
+.quiz_nav .add_quiz_set form {
+  height: 50px;
+}
+.quiz_nav .add_quiz_set form::after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
+.quiz_nav .add_quiz_set form input {
+  display: block;
+  float: left;
+  font-size: 24px;
+  color: black;
+  width: 80%;
+  height: 100%;
+}
+
+.quiz_nav .add_quiz_set form button {
+  display: block;
+  height: 100%;
+  font-size: 18px;
+  float: left;
+  width: 20%;
+}

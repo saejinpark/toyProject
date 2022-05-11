@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+@font-face {
+  src: url(/font/BMJUA_ttf.ttf);
+  font-family: "jua";
+}
+@font-face {
+  src: url(/font/NotoSansKR-Thin.otf);
+  font-family: "NotoSansKR-Thin";
+}
+@font-face {
+  src: url(/font/NotoSansKR-Light.otf);
+  font-family: "NotoSansKR-Light";
+}
+@font-face {
+  src: url(/font/NotoSansKR-Regular.otf);
+  font-family: "NotoSansKR-Regular";
+}
+@font-face {
+  src: url(/font/NotoSansKR-Medium.otf);
+  font-family: "NotoSansKR-Medium";
+}
+@font-face {
+  src: url(/font/NotoSansKR-Bold.otf);
+  font-family: "NotoSansKR-Bold";
+}
+@font-face {
+  src: url(/font/NotoSansKR-Black.otf);
+  font-family: "NotoSansKR-Black";
+}
+/* Global */
+
+* {
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+}
+body {
+  color: #2f3640;
+
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.blind {
+  overflow: hidden;
+  position: absolute;
+  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+}
+
+.inner {
+  max-width: 1024px;
+  padding: 0 20px;
+  margin: auto;
+  height: 100%;
+}
+.inner::after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
+

@@ -1,0 +1,135 @@
+.main {
+  height: 100vh;
+  padding: 20vh 0 15vh;
+}
+
+.todolist {
+  display: none;
+  height: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  color: #f5f6fa;
+}
+
+.todolist article {
+  max-height: 65vh;
+  padding: 20px 30px;
+}
+.todolist article h3 {
+  font-size: 34px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  text-transform: uppercase;
+}
+
+.todolist article ul {
+  height: 70%;
+  margin-bottom: 10%;
+  overflow: scroll;
+}
+.todolist article ul::-webkit-scrollbar {
+  width: 0;
+}
+
+.todolist article ul li {
+  font-size: 18px;
+  padding: 10px 0;
+  border-bottom: 3px dotted #f5f6fa;
+}
+
+.todolist article ul li span {
+  display: block;
+  float: left;
+  padding: 5px 0;
+  font-weight: 600;
+}
+.todolist article ul li a {
+  display: flex;
+  float: left;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  background-color: #f5f6fa;
+  color: #2f3640;
+  padding: 5px 10px;
+  font-size: 14px;
+  width: 20%;
+}
+
+.todolist article ul li::after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
+.finish {
+  background-color: #353b48;
+}
+
+.finish ul li span {
+  display: block;
+  width: 80%;
+  float: left;
+}
+
+.todo {
+  background-color: #192a56;
+}
+
+.todo ul li span {
+  width: 58%;
+}
+
+.todo ul li a:nth-child(3) {
+  margin-left: 2%;
+}
+
+.todo form {
+  width: 100%;
+}
+.todo form::after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
+.todo form input {
+  padding: 10px;
+  outline: 0;
+  float: left;
+  display: block;
+  width: 80%;
+  border: 0;
+}
+
+.todo form button {
+  float: left;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 0;
+  font-weight: 700;
+  padding: 10px;
+  height: 100%;
+  width: 20%;
+  color: #2f3640;
+}
+
+#navbar_trigger01:checked ~ .main .inner .todolist {
+  display: grid;
+}
+
+.quiz {
+  display: none;
+  height: 100%;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  color: #f5f6fa;
+  background-color: #2f3640;
+}
+
+#navbar_trigger02:checked ~ .main .inner .quiz {
+  display: block;
+}

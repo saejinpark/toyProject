@@ -1,0 +1,73 @@
+.main {
+  padding: 15vh 0;
+  height: 100vh;
+}
+
+.main .form {
+  display: block;
+  height: 100%;
+  padding: 50px 30px;
+  background-color: #718093;
+}
+
+.main .form fieldset {
+    border: 1px solid #2f3640;
+  background-color: #f5f6fa;
+  padding: 15px 30px;
+}
+
+.main .form fieldset::after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
+.main .form fieldset fieldset:nth-child(3) {
+  margin-top: 30px;
+}
+
+.main .form fieldset legend {
+  font-weight: 600;
+  padding: 10px 15px;
+  font-size: 28px;
+  background-color: #f5f6fa;
+}
+.main .form fieldset input {
+  font-size: 28px;
+  outline: 0;
+  border: 1px solid #2f3640;
+  padding: 10px 15px;
+  width: 100%;
+}
+
+.main .form button,
+.main .form a {
+    margin-top: 40px;
+    border: 1px solid #718093;
+  font-weight: 600;
+  display: block;
+  float: left;
+  padding: 10px 15px;
+  font-size: 28px;
+  width: 48%;
+  text-align: center;
+  line-height: 1.5;
+  color: #2f3640;
+  margin-bottom: 30px;
+}
+
+.main .form button {
+    background-color: #dcdde1;
+}
+
+.main .form a {
+    background-color: #dcdde1;
+    margin-left: 4%;
+}
+
+.main .form button:hover,
+.main .form a:hover {
+    color: #f5f6fa;
+    background-color: #2f3640;
+}

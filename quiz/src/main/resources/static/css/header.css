@@ -1,0 +1,84 @@
+.header {
+  width: 100%;
+  padding: 30px 0 0;
+  background-color: #dcdde1;
+  position: fixed;
+  top: 0;
+}
+.header .logo {
+  font-size: 40px;
+  font-weight: 900;
+  margin-bottom: 10px;
+  float: left;
+}
+
+.top_menu {
+  float: right;
+}
+
+.top_menu::after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
+.top_menu li {
+  float: left;
+}
+
+.top_menu li a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: 600;
+  padding: 10px 15px;
+  opacity: 0.4;
+}
+
+.top_menu li a:hover {
+  color: #dcdde1;
+  background-color: #353b48;
+  opacity: 1;
+}
+
+.top_menu li:nth-child(n + 2) {
+  margin-left: 15px;
+}
+
+input[name="navbar_trigger"] {
+  display: none;
+}
+
+.navbar {
+  clear: both;
+  margin-top: 15px;
+  display: block;
+  width: 100%;
+  font-weight: 900;
+  font-size: 28px;
+}
+
+.navbar ul::after {
+  content: "";
+  display: block;
+  width: 100%;
+  clear: both;
+}
+
+.navbar ul li {
+  float: left;
+  padding: 10px 15px;
+}
+
+.navbar ul li:nth-child(2) {
+  margin-left: 15px;
+}
+
+#navbar_trigger01:checked ~ .header .inner .navbar ul li:nth-child(1) {
+  background-color: white;
+}
+
+#navbar_trigger02:checked ~ .header .inner .navbar ul li:nth-child(2) {
+  background-color: white;
+}

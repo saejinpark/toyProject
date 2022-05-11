@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <th:block th:fragment="script">
+    <script th:inline="javascript">
+      function setNavbar() {
+        const navbarLabel = document.querySelectorAll(
+          "label[for*='navbar_trigger']"
+        );
+        console.log(navbarLabel);
+        for (let i = 0; i < navbarLabel.length; i++) {
+          navbarLabel[i].addEventListener("click", (e) => {
+            fetch("/set_navbar/" + i, {
+              method: "GET",
+            });
+          });
+        }
+      }
+
+      setNavbar();
+    </script>
+  </th:block>
+</html>

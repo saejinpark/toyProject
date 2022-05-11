@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+  <header class="header">
+    <div class="inner">
+      <h1 class="logo">
+        <a href="/"> Quiz Maker</a>
+      </h1>
+      <th:block th:if="${session.login}">
+        <ul class="top_menu">
+          <li>
+            <a href="/logout">로그아웃</a>
+          </li>
+        </ul>
+        <nav class="navbar">
+          <ul>
+            <li>
+              <label for="navbar_trigger01">ToDoList</label>
+            </li>
+            <li>
+              <label for="navbar_trigger02">Quiz</label>
+            </li>
+          </ul>
+        </nav>
+      </th:block>
+    </div>
+  </header>
+</html>
