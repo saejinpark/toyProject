@@ -13,4 +13,10 @@
     <link th:href=" '/css/main/' + ${page}  + '.css' " rel="stylesheet">
     <link href="/css/footer.css" rel="stylesheet" />
     <title th:text = "'Quiz Maker | ' + ${page} ">title</title>
+    <th:block th:if="${session.login}">
+        <link
+        rel="stylesheet"
+        href="https://unpkg.com/swiper/swiper-bundle.min.css"
+        />
+    </th:block>
 </head>

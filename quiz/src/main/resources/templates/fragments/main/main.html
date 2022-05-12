@@ -7,7 +7,10 @@
         <article class="finish">
           <h3>finish</h3>
           <ul>
-            <li th:each="toDo : ${toDoList}"  th:if="${toDo.todoStatus.name() == 'FINISHED'}">
+            <li
+              th:each="toDo : ${toDoList}"
+              th:if="${toDo.todoStatus.name() == 'FINISHED'}"
+            >
               <span th:text="${toDo.sentence}">sentence</span>
               <a th:href="@{'/todo/return/' + ${toDo.id}}">RETURN</a>
             </li>
@@ -16,20 +19,70 @@
         <article class="todo">
           <h3>todo</h3>
           <ul>
-            <li th:each="toDo : ${toDoList}" th:if="${toDo.todoStatus.name() == 'TODO'}">
+            <li
+              th:each="toDo : ${toDoList}"
+              th:if="${toDo.todoStatus.name() == 'TODO'}"
+            >
               <span th:text="${toDo.sentence}">sentence</span>
               <a th:href="@{'/todo/finish/' + ${toDo.id}}">FINISH</a>
               <a th:href="@{'/todo/delete/' + ${toDo.id}}">DELETE</a>
             </li>
           </ul>
-          <form action="/addToDoList" method="post"  th:Object="${toDoForm}">
-            <input type="text" th:field="*{sentence}"  autocomplete="off"/>
+          <form action="/addToDoList" method="post" th:Object="${toDoForm}">
+            <input type="text" th:field="*{sentence}" autocomplete="off" />
             <button>➕</button>
           </form>
         </article>
       </section>
       <section class="quiz">
-
+        <h3 class="blind">quiz</h3>
+        <div class="quiz_swipper_container">
+          <article
+            class="quiz_swipper"
+            th:each="quizSet, info : ${quizSetList}"
+          >
+            <h4 class="blind" th:text="${quizSet.name}">quizSetName</h4>
+            <div th:class=" 'swiper ' + ${ 'quizSwiper' + info.index}">
+              <div class="swiper-wrapper">
+                <div
+                  class="swiper-slide"
+                  th:each="quiz : ${quizSet.getQuizList()}"
+                >
+                  <h5 th:text="${quiz.quiz}">문제</h5>
+                  <p class="blind" th:text="${quiz.answer}">답</p>
+                  <form class="answer-check">
+                    <input type="text" placeholder="답" autocomplete="off" />
+                    <button>❔</button>
+                  </form>
+                </div>
+                <div class="swiper-slide add">
+                  <h5>문제 등록하기</h5>
+                  <br />
+                  <form
+                    th:action="@{'/quizSet/' + ${quizSet.id} + '/addQuiz'}"
+                    method="post"
+                    th:Object="${quizForm}"
+                  >
+                    <button>➕</button>
+                    <input
+                      type="text"
+                      th:field="*{quiz}"
+                      placeholder="문제"
+                      autocomplete="off"
+                    />
+                    <input
+                      type="text"
+                      th:field="*{answer}"
+                      placeholder="답"
+                      autocomplete="off"
+                    />
+                  </form>
+                </div>
+              </div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </article>
+        </div>
       </section>
     </div>
   </main>

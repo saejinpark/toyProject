@@ -1,11 +1,10 @@
 package com.maker.quiz.controller;
+import com.maker.quiz.dto.QuizForm;
 import com.maker.quiz.dto.QuizSetForm;
 import com.maker.quiz.dto.ToDoForm;
-import com.maker.quiz.entity.Member;
-import com.maker.quiz.entity.QuizSet;
-import com.maker.quiz.entity.ToDo;
-import com.maker.quiz.entity.ToDoStatus;
+import com.maker.quiz.entity.*;
 import com.maker.quiz.service.MemberService;
+import com.maker.quiz.service.QuizService;
 import com.maker.quiz.service.QuizSetService;
 import com.maker.quiz.service.ToDoService;
 import lombok.RequiredArgsConstructor;
@@ -26,9 +25,10 @@ public class MainController {
     private final MemberService memberService;
     private final ToDoService toDoService;
     private final QuizSetService quizSetService;
+    private final QuizService quizService;
 
     @GetMapping("/")
-    public String getMain(HttpServletRequest request, Model model, ToDoForm toDoForm, QuizSetForm quizSetForm) {
+    public String getMain(HttpServletRequest request, Model model, ToDoForm toDoForm, QuizSetForm quizSetForm, QuizForm quizForm) {
         HttpSession session = request.getSession();
         if (session.getAttribute("login") == null){
             return "redirect:/login";
@@ -39,6 +39,7 @@ public class MainController {
         model.addAttribute("quizSetList", member.getQuizSets());
         model.addAttribute("toDoForm", toDoForm);
         model.addAttribute("quizSetForm", quizSetForm);
+        model.addAttribute("quizForm", quizForm);
         return "layout";
     }
 
@@ -85,6 +86,32 @@ public class MainController {
         Member member = memberService.findOne((String) session.getAttribute("member"));
         quizSet.setMember(member);
         quizSetService.saveQuizSet(quizSet);
+        return "redirect:/";
+    }
+
+    @GetMapping("/delete/quizSet/{quizSetId}")
+    public String deleteQuizSet(@PathVariable Long quizSetId){
+        QuizSet quizSet = quizSetService.findQuizSet(quizSetId);
+        quizSetService.deleteQuizSet(quizSet);
+        return "redirect:/";
+    }
+
+    @PostMapping("/edit/quizSet/{quizSetId}")
+    public String editQuizSet(@PathVariable Long quizSetId, @Valid QuizSetForm quizSetForm){
+        QuizSet quizSet = quizSetService.findQuizSet(quizSetId);
+        quizSet.setName(quizSetForm.getName());
+        quizSetService.saveQuizSet(quizSet);
+        return "redirect:/";
+    }
+
+    @PostMapping("/quizSet/{quizSetId}/addQuiz")
+    public String addQuiz(@PathVariable Long quizSetId, QuizForm quizForm){
+        QuizSet quizSet = quizSetService.findQuizSet(quizSetId);
+        Quiz quiz = new Quiz();
+        quiz.setQuizSet(quizSet);
+        quiz.setQuiz(quizForm.getQuiz());
+        quiz.setAnswer(quizForm.getAnswer());
+        quizService.saveQuiz(quiz);
         return "redirect:/";
     }
 

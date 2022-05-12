@@ -23,7 +23,7 @@ public class QuizSet {
     @JoinColumn(name="member_id")
     private Member member;
 
-    @OneToMany(mappedBy = "quiz_set")
+    @OneToMany(mappedBy = "quizSet")
     private List<Quiz> quizList = new ArrayList<>();
 
     public void setMember(Member member){

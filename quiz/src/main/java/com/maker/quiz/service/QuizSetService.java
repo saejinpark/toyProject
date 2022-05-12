@@ -1,5 +1,6 @@
 package com.maker.quiz.service;
 
+import com.maker.quiz.entity.Quiz;
 import com.maker.quiz.entity.QuizSet;
 import com.maker.quiz.repository.QuizSetRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class QuizSetService {
     private final QuizSetRepository quizSetRepository;
+    private final QuizService quizService;
 
     @Transactional
     public Long saveQuizSet(QuizSet quizSet){
@@ -25,6 +27,9 @@ public class QuizSetService {
     @Transactional
     public Long deleteQuizSet(QuizSet quizSet){
         Long deletedQuizSetId = quizSet.getId();
+        for(Quiz quiz : quizSet.getQuizList()){
+            quizService.deleteQuiz(quiz);
+        }
         quizSetRepository.delete(quizSet);
         return deletedQuizSetId;
     }

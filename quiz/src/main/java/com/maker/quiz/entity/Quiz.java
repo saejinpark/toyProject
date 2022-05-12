@@ -17,9 +17,14 @@ public class Quiz {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "quiz_set_id")
-    private QuizSet quiz_set;
+    private QuizSet quizSet;
 
     private String quiz;
 
     private String answer;
+
+    public void setQuizSet(QuizSet quizSet){
+        this.quizSet = quizSet;
+        quizSet.getQuizList().add(this);
+    }
 }

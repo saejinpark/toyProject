@@ -7,7 +7,16 @@
       <input type="radio" name="navbar_trigger" id="navbar_trigger02" />
     </th:block>
     <header th:replace="fragments/header :: header" />
-    <header th:replace="fragments/aside :: aside" />
+
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger01" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger02" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger03" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger04" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger05" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger06" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger07" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger08" />
+    <aside th:replace="fragments/aside :: aside" />
     <main th:replace="( 'fragments/main/' + ${page} ) :: main" />
     <footer th:replace="fragments/footer :: footer" />
 
@@ -25,6 +34,11 @@
           if(navbarCheck != null){
               const navbarInput = document.querySelectorAll("input[name='navbar_trigger']");
               navbarInput[navbarCheck].checked = true;
+          }
+          const quizSetCheck = [[${session.quizSetCheck}]];
+          if(quizSetCheck != null){
+              const quizSetInput = document.querySelectorAll("input[name*='quiz_set_trigger']");
+              quizSetInput[quizSetCheck].checked = true;
           }
       }
     </script>

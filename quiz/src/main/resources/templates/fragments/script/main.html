@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <th:block th:fragment="script">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script th:inline="javascript">
       function setNavbar() {
         const navbarLabel = document.querySelectorAll(
           "label[for*='navbar_trigger']"
         );
-        console.log(navbarLabel);
         for (let i = 0; i < navbarLabel.length; i++) {
           navbarLabel[i].addEventListener("click", (e) => {
             fetch("/set_navbar/" + i, {
@@ -15,8 +15,61 @@
           });
         }
       }
-
       setNavbar();
+
+      function setQuizSet() {
+        const quizSetLabel = document.querySelectorAll(
+          "label[for^='quiz_set_trigger']"
+        );
+        for (let i = 0; i < quizSetLabel.length; i++) {
+          quizSetLabel[i].addEventListener("click", (e) => {
+            fetch("/set_quiz_set/" + i, {
+              method: "GET",
+            });
+          });
+        }
+      }
+      setQuizSet();
+      function setQuizSwiper() {
+        const quizSwiperObject = {};
+        const swipers = document.querySelectorAll(".swiper");
+        for (let i = 0; i < swipers.length; i++) {
+          const swiper = new Swiper(".quizSwiper" + i, {
+            cssMode: true,
+            pagination: {
+              el: ".swiper-pagination",
+              type: "fraction",
+            },
+          });
+          quizSwiperObject["quizSwiper" + i] = swiper;
+        }
+        for (let swiperKey of Object.keys(quizSwiperObject)) {
+          const swiper = document.querySelector("." + swiperKey);
+          const answerCheck = swiper.querySelectorAll(".answer-check");
+          answerCheck.forEach((element, index) => {
+            element.addEventListener("submit", (e) => {
+              e.preventDefault();
+              const slide = element.parentNode;
+              const answer = slide.querySelector("p").innerText;
+              const input = element.querySelector("input");
+              const submitAnswer = input.value;
+              if (answer === submitAnswer) {
+                quizSwiperObject[swiperKey].slideTo(index + 1, 0);
+                if (index + 1 < answerCheck.length) {
+                  const nextForm = answerCheck[index + 1];
+                  const nextInput = nextForm.querySelector("input");
+                  console.log(nextInput);
+                  nextInput.focus();
+                }
+              } else {
+                alert(` 정답은 '${answer}' 입니다.`);
+                input.focus();
+              }
+            });
+          });
+        }
+      }
+      setQuizSwiper();
     </script>
   </th:block>
 </html>
