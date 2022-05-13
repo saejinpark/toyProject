@@ -23,6 +23,6 @@ public class ToDo {
 
     public void setMember(Member member) {
         this.member = member;
-        member.getToDos().add(this);
+        member.getToDoList().add(this);
     }
 }

@@ -15,6 +15,12 @@ public class MemberService {
     private final MemberRepository memberRepository;
 
     @Transactional
+    public String saveMember(Member member){
+        memberRepository.save(member);
+        return member.getId();
+    }
+
+    @Transactional
     public String join(Member member){
         validateDuplicateMember(member);
         memberRepository.save(member);

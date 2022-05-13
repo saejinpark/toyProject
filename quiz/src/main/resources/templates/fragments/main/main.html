@@ -41,6 +41,34 @@
             class="quiz_swipper"
             th:each="quizSet, info : ${quizSetList}"
           >
+            <input
+              type="checkbox"
+              th:name="${'quiz_add_trigger' + quizSet.id}"
+              th:id="${'quiz_add_trigger' + quizSet.id}"
+            />
+            <article class="quiz_add">
+              <h5 class="blind">문제 추가하기</h5>
+              <form
+                th:action="@{'/quizSet/' + ${quizSet.id} + '/quiz/add'}"
+                method="post"
+                th:Object="${quizForm}"
+              >
+                <button>➕</button>
+                <input
+                  type="text"
+                  th:field="*{quiz}"
+                  placeholder="문제"
+                  autocomplete="off"
+                />
+                <input
+                  type="text"
+                  th:field="*{answer}"
+                  placeholder="답"
+                  autocomplete="off"
+                />
+              </form>
+              <label th:for="${'quiz_add_trigger' + quizSet.id }">▼</label>
+            </article>
             <h4 class="blind" th:text="${quizSet.name}">quizSetName</h4>
             <div th:class=" 'swiper ' + ${ 'quizSwiper' + info.index}">
               <div class="swiper-wrapper">
@@ -48,34 +76,16 @@
                   class="swiper-slide"
                   th:each="quiz : ${quizSet.getQuizList()}"
                 >
+                  <a
+                    class="quiz_delete"
+                    th:href="@{'/quiz/delete/' + ${quiz.id}}"
+                    >×</a
+                  >
                   <h5 th:text="${quiz.quiz}">문제</h5>
                   <p class="blind" th:text="${quiz.answer}">답</p>
                   <form class="answer-check">
                     <input type="text" placeholder="답" autocomplete="off" />
                     <button>❔</button>
-                  </form>
-                </div>
-                <div class="swiper-slide add">
-                  <h5>문제 등록하기</h5>
-                  <br />
-                  <form
-                    th:action="@{'/quizSet/' + ${quizSet.id} + '/addQuiz'}"
-                    method="post"
-                    th:Object="${quizForm}"
-                  >
-                    <button>➕</button>
-                    <input
-                      type="text"
-                      th:field="*{quiz}"
-                      placeholder="문제"
-                      autocomplete="off"
-                    />
-                    <input
-                      type="text"
-                      th:field="*{answer}"
-                      placeholder="답"
-                      autocomplete="off"
-                    />
                   </form>
                 </div>
               </div>

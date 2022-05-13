@@ -1,5 +1,6 @@
 package com.maker.quiz.repository;
 
+import com.maker.quiz.entity.Member;
 import com.maker.quiz.entity.QuizSet;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -24,6 +25,10 @@ public class QuizSetRepository {
     }
 
     public void delete(QuizSet quizSet) {
+        Member member = quizSet.getMember();
+        List<QuizSet> quizSetList = member.getQuizSetList();
+        quizSetList.remove(quizSet);
         em.remove(quizSet);
     }
+    
 }

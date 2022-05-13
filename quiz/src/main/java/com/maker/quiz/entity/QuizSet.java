@@ -28,6 +28,6 @@ public class QuizSet {
 
     public void setMember(Member member){
         this.member = member;
-        member.getQuizSets().add(this);
+        member.getQuizSetList().add(this);
     }
 }

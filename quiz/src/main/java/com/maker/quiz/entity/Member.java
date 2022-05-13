@@ -3,10 +3,7 @@ package com.maker.quiz.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,8 +20,9 @@ public class Member {
     private String password;
 
     @OneToMany(mappedBy = "member")
-    private List<QuizSet> quizSets = new ArrayList<>();
+    @OrderColumn(name = "QUIZ_SET_ORDER")
+    private List<QuizSet> quizSetList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
-    private List<ToDo> toDos = new ArrayList<>();
+    private List<ToDo> toDoList = new ArrayList<>();
 }

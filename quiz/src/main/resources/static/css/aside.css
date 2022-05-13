@@ -48,7 +48,7 @@ input[name*="quiz_set_trigger"] {
   font-size: 18px;
   width: 25%;
   height: 30px;
-  border: 1px solid #353b48;
+  border: 1px solid darkgray;
   color: #353b48;
   background-color: #f5f6fa;
 }
@@ -275,10 +275,10 @@ input[name*="quiz_set_trigger"] {
 
 .quiz_nav .edit_quiz_set {
   position: fixed;
-  top: 20vh;
-  width: 984px;
-  height: 65vh;
-  left: calc(50vw - 492px);
+  top: calc(20vh + 25px);
+  bottom: calc(15vh + 25px);
+    width: 934px;
+    left: calc(50vw - 467px);
   display: none;
   justify-content: center;
   align-items: center;
@@ -354,9 +354,9 @@ input#navbar_trigger02:checked ~ .aside .quiz_nav {
 .quiz_nav .add_quiz_set {
   position: fixed;
   margin: auto;
-  top: 20vh;
-  bottom: 15vh;
-  width: 984px;
+  top: calc(20vh + 25px);
+  bottom: calc(15vh + 25px);
+  width: 934px;
   left: 0;
   right: 0;
   display: none;
@@ -370,12 +370,14 @@ input#navbar_trigger02:checked ~ .aside .quiz_nav {
 }
 
 .quiz_nav .add_quiz_set label {
+  height: auto;
   width: auto;
-  padding: 10px 15px;
+  padding: 10px;
   position: absolute;
   top: 0;
   right: 0;
   background-color: transparent;
+  color: black;
 }
 
 .quiz_nav .add_quiz_set form {

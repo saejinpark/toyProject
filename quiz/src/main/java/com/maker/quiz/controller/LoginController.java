@@ -39,11 +39,9 @@ public class LoginController {
         HttpSession session = request.getSession();
         try {
             Member member = memberService.findOne(loginForm.getId());
-            List<QuizSet> quizSets = member.getQuizSets();
             if(member.getPassword().equals(loginForm.getPassword())){
                 session.setAttribute("login", true);
                 session.setAttribute("member", member.getId());
-                session.setAttribute("quizSets", quizSets);
                 session.setAttribute("navbarCheck", 0);
                 session.setAttribute("quizSetCheck", 0);
                 session.setAttribute("message", "로그인");

@@ -9,24 +9,22 @@
                 <article class="edit_quiz_set">
                   <h3 class="blind">edit Quiz set</h3>
                   <label for="edit_quiz_set_trigger">✖</label>
-                  <form th:action="@{'/edit/quizSet/' + ${quizSet.id} }" method="post" th:Object="${quizSetForm}">
+                  <form th:action="@{'/quizSet/edit/' + ${quizSet.id} }" method="post" th:Object="${quizSetForm}">
                     <input type="text" th:field="*{name}" autocomplete="off">
-                    <button>
-                        🔘
-                    </button>
+                    <button>🖊</button>
                   </form>
                 </article>
                 <label class="edit" for="edit_quiz_set_trigger">🖊</label>
-                <a th:href="@{'/delete/quizSet/' + ${quizSet.id}}">X</a>
-                <a href="#">▲</a>
-                <a href="#">▼</a>
+                <a th:href="@{'/quizSet/delete/' + ${quizSet.id}}">X</a>
+                <a th:href="@{'/quizSet/up/' + ${quizSet.id}}">▲</a>
+                <a th:href="@{'/quizSet/down/' + ${quizSet.id}}">▼</a>
             </li>
             <li>
                 <input type="checkbox" id="add_quiz_set_trigger" >
                 <article class="add_quiz_set">
                     <h3 class="blind">add Quiz set</h3>
                     <label for="add_quiz_set_trigger">✖</label>
-                    <form action="/add/quizSet" th:Object="${quizSetForm}">
+                    <form action="/quizSet/add" th:Object="${quizSetForm}">
                         <input type="text" th:field="*{name}" autocomplete="off">
                         <button>
                             ➕
