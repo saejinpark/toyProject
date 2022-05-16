@@ -12,7 +12,7 @@
               th:if="${toDo.todoStatus.name() == 'FINISHED'}"
             >
               <span th:text="${toDo.sentence}">sentence</span>
-              <a th:href="@{'/todo/return/' + ${toDo.id}}">RETURN</a>
+              <a th:href="@{'/toDo/return/' + ${toDo.id}}">RETURN</a>
             </li>
           </ul>
         </article>
@@ -24,11 +24,11 @@
               th:if="${toDo.todoStatus.name() == 'TODO'}"
             >
               <span th:text="${toDo.sentence}">sentence</span>
-              <a th:href="@{'/todo/finish/' + ${toDo.id}}">FINISH</a>
-              <a th:href="@{'/todo/delete/' + ${toDo.id}}">DELETE</a>
+              <a th:href="@{'/toDo/finish/' + ${toDo.id}}">FINISH</a>
+              <a th:href="@{'/toDo/delete/' + ${toDo.id}}">DELETE</a>
             </li>
           </ul>
-          <form action="/addToDoList" method="post" th:Object="${toDoForm}">
+          <form action="/toDoList/add" method="post" th:Object="${toDoForm}">
             <input type="text" th:field="*{sentence}" autocomplete="off" />
             <button>➕</button>
           </form>
@@ -70,7 +70,7 @@
               <label th:for="${'quiz_add_trigger' + quizSet.id }">▼</label>
             </article>
             <h4 class="blind" th:text="${quizSet.name}">quizSetName</h4>
-            <div th:class=" 'swiper ' + ${ 'quizSwiper' + info.index}">
+            <div th:class=" 'swiper ' + ${ 'quiz_swiper' + info.index}">
               <div class="swiper-wrapper">
                 <div
                   class="swiper-slide"
@@ -91,8 +91,96 @@
               </div>
               <div class="swiper-pagination"></div>
             </div>
+            <input
+              type="range"
+              th:name=" 'quiz_gage_pagination' + ${quizSet.id}"
+              th:id=" 'quiz_gage_pagination' + ${quizSet.id}"
+              min="0"
+              th:max="${quizSet.getQuizList().size()-1}"
+              value="0"
+            />
           </article>
         </div>
+      </section>
+      <section class="journal">
+        <h2 class="blind">Journal</h2>
+        <input
+          type="checkbox"
+          name="add_journal_trigger"
+          id="add_journal_trigger"
+        />
+        <article class="add_journal">
+          <h3 class="blind">add_journal</h3>
+          <label for="add_journal_trigger">×</label>
+          <form action="">
+            <input type="text" name="title" />
+            <textarea name="" id="" cols="30" rows="10"></textarea>
+            <button>PUSH</button>
+          </form>
+        </article>
+        <ul class="journal_header">
+          <li>
+            <select name="journal_year" id="journal_year">
+              <option value="all">year</option>
+              <option value="2020">2020</option>
+            </select>
+          </li>
+          <li>
+            <select name="journal_month" id="journal_month">
+              <option value="all">month</option>
+              <option value="2016">2016</option>
+            </select>
+          </li>
+          <li>
+            <select name="journal_date" id="journal_date">
+              <option value="all">date</option>
+              <option value="2016">2016</option>
+            </select>
+          </li>
+          <li>
+            <select name="journal_day" id="journal_day">
+              <option value="all">day</option>
+              <option value="0">일</option>
+              <option value="1">월</option>
+              <option value="2">화</option>
+              <option value="3">수</option>
+              <option value="4">목</option>
+              <option value="5">금</option>
+              <option value="6">토</option>
+            </select>
+          </li>
+          <li>
+            <label class="add_journal_trigger" for="add_journal_trigger"
+              >Write</label
+            >
+          </li>
+        </ul>
+        <input
+          type="radio"
+          name="journal_detail_trigger"
+          id="journal_detail_trigger_close"
+        />
+        <ul class="journal_body">
+          <li>
+            <label for="journal_detail_trigger1">
+              <time datetime="">0000년 00월 00일 0요일</time>
+              <h3>title</h3>
+              <a href="journal_trigger1">delete</a>
+              <input
+                type="radio"
+                name="journal_detail_trigger"
+                id="journal_detail_trigger1"
+              />
+              <label class="journal_detail" for="journal_detail_trigger_close">
+                <div class="inner">
+                  <time datetime="">0000년 00월 00일 0요일</time>
+                  <h4>title</h4>
+                  <p>detail</p>
+                </div>
+              </label>
+            </label>
+          </li>
+        </ul>
       </section>
     </div>
   </main>

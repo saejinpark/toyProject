@@ -44,7 +44,15 @@ public class MainController {
         return "layout";
     }
 
-    @PostMapping("/addToDoList")
+    @GetMapping("/delete")
+    public String deleteMember(HttpServletRequest request){
+        HttpSession session = request.getSession();
+        Member member = memberService.findOne((String) session.getAttribute("member"));
+        memberService.deleteMember(member);
+        return "redirect:/logout";
+    }
+
+    @PostMapping("/toDoList/add")
     public String toDoAdd(HttpServletRequest request, @Valid ToDoForm toDoForm){
         HttpSession session = request.getSession();
         Member member = memberService.findOne((String) session.getAttribute("member"));
@@ -56,7 +64,7 @@ public class MainController {
         return "redirect:/";
     }
 
-    @GetMapping("/todo/finish/{toDoId}")
+    @GetMapping("/toDo/finish/{toDoId}")
     public String toDoFinish(@PathVariable Long toDoId) {
         ToDo todo = toDoService.findToDo(toDoId);
         todo.setTodoStatus(ToDoStatus.FINISHED);
@@ -64,14 +72,14 @@ public class MainController {
         return "redirect:/";
     }
 
-    @GetMapping("/todo/delete/{toDoId}")
+    @GetMapping("/toDo/delete/{toDoId}")
     public String toDoDelete(@PathVariable Long toDoId) {
         ToDo todo = toDoService.findToDo(toDoId);
         toDoService.deleteToDo(todo);
         return "redirect:/";
     }
 
-    @GetMapping("/todo/return/{toDoId}")
+    @GetMapping("/toDo/return/{toDoId}")
     public String toDoReturn(@PathVariable Long toDoId) {
         ToDo todo = toDoService.findToDo(toDoId);
         todo.setTodoStatus(ToDoStatus.TODO);

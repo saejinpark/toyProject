@@ -32,7 +32,7 @@
   align-items: center;
   font-size: 18px;
   font-weight: 600;
-  padding: 10px 15px;
+  padding: 5px 8px;
   opacity: 0.4;
 }
 
@@ -43,7 +43,7 @@
 }
 
 .top_menu li:nth-child(n + 2) {
-  margin-left: 15px;
+  margin-left: 5px;
 }
 
 input[name="navbar_trigger"] {
@@ -71,7 +71,7 @@ input[name="navbar_trigger"] {
   padding: 10px 15px;
 }
 
-.navbar ul li:nth-child(2) {
+.navbar ul li:nth-child(n+2) {
   margin-left: 15px;
 }
 
@@ -80,5 +80,9 @@ input[name="navbar_trigger"] {
 }
 
 #navbar_trigger02:checked ~ .header .inner .navbar ul li:nth-child(2) {
+  background-color: white;
+}
+
+#navbar_trigger03:checked ~ .header .inner .navbar ul li:nth-child(3) {
   background-color: white;
 }

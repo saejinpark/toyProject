@@ -25,4 +25,7 @@ public class Member {
 
     @OneToMany(mappedBy = "member")
     private List<ToDo> toDoList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member")
+    private List<Journal> journalList = new ArrayList<>();
 }

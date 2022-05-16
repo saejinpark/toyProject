@@ -1,7 +1,28 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
   <th:block th:fragment="script">
-    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="/js/swiper-bundle.min.js"></script>
+    <script th:inline="javascript">
+      window.onload = () => {
+          const message = [[${session.message}]];
+          if(message !== null) {
+              swal(message);
+              fetch("/message_reset", {
+                method: "GET",
+              });
+          }
+          const navbarCheck = [[${session.navbarCheck}]];
+          if(navbarCheck != null){
+              const navbarInput = document.querySelectorAll("input[name='navbar_trigger']");
+              navbarInput[navbarCheck].checked = true;
+          }
+          const quizSetCheck = [[${session.quizSetCheck}]];
+          if(quizSetCheck != null){
+              const quizSetInput = document.querySelectorAll("input[name*='quiz_set_trigger']");
+              quizSetInput[quizSetCheck].checked = true;
+          }
+      }
+    </script>
     <script th:inline="javascript">
       function setNavbar() {
         const navbarLabel = document.querySelectorAll(
@@ -34,14 +55,14 @@
         const quizSwiperObject = {};
         const swipers = document.querySelectorAll(".swiper");
         for (let i = 0; i < swipers.length; i++) {
-          const swiper = new Swiper(".quizSwiper" + i, {
+          const swiper = new Swiper(".quiz_swiper" + i, {
             cssMode: true,
             pagination: {
               el: ".swiper-pagination",
               type: "fraction",
             },
           });
-          quizSwiperObject["quizSwiper" + i] = swiper;
+          quizSwiperObject["quiz_swiper" + i] = swiper;
         }
         for (let swiperKey of Object.keys(quizSwiperObject)) {
           const swiper = document.querySelector("." + swiperKey);
@@ -53,13 +74,38 @@
               const answer = slide.querySelector("p").innerText;
               const input = element.querySelector("input");
               const submitAnswer = input.value;
+              input.value = "";
+              const quizSetArticle = swiper.parentNode;
+              const gage = quizSetArticle.querySelector(
+                "input[id*='quiz_gage_pagination']"
+              );
+              const gageEventHandler = (e) => {
+                const value = e.target.value;
+                console.log(value)
+                quizSwiperObject[swiperKey].slideTo(value, 0);
+              };
+              gage.addEventListener("mouseup", gageEventHandler);
+              gage.addEventListener("mousedown", gageEventHandler);
+              gage.addEventListener("mousemove", gageEventHandler);
+              gage.addEventListener("pointerup", gageEventHandler);
+              gage.addEventListener("pointerdown", gageEventHandler);
+              gage.addEventListener("pointermove", gageEventHandler);
+              gage.addEventListener("dragend", gageEventHandler);
+              gage.addEventListener("dragleave", gageEventHandler);
               if (answer === submitAnswer) {
-                quizSwiperObject[swiperKey].slideTo(index + 1, 0);
                 if (index + 1 < answerCheck.length) {
+                  quizSwiperObject[swiperKey].slideTo(index + 1, 0);
                   const nextForm = answerCheck[index + 1];
                   const nextInput = nextForm.querySelector("input");
-                  console.log(nextInput);
+                  gage.value = Number(gage.value) + 1;
                   nextInput.focus();
+                } else {
+                  alert("수고하셨습니다.");
+                  quizSwiperObject[swiperKey].slideTo(0, 0);
+                  const firstForm = answerCheck[0];
+                  const firstInput = firstForm.querySelector("input");
+                  gage.value = "0";
+                  firstInput.focus();
                 }
               } else {
                 alert(` 정답은 '${answer}' 입니다.`);

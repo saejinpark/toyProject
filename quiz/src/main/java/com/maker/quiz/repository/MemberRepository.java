@@ -2,7 +2,6 @@ package com.maker.quiz.repository;
 
 import com.maker.quiz.entity.Member;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.boot.model.source.internal.hbm.XmlElementMetadata;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -33,5 +32,9 @@ public class MemberRepository {
         return em.createQuery("select m from Member m where m.id = :id", Member.class)
                 .setParameter("id", id)
                 .getResultList();
+    }
+
+    public void delete(Member member) {
+        em.remove(member);
     }
 }

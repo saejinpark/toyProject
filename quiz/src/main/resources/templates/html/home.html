@@ -33,7 +33,8 @@
   </head>
   <body>
     <input type="radio" name="navbar_trigger" id="navbar_trigger01" />
-    <input type="radio" name="navbar_trigger" id="navbar_trigger02" checked />
+    <input type="radio" name="navbar_trigger" id="navbar_trigger02" />
+    <input type="radio" name="navbar_trigger" id="navbar_trigger03" checked />
     <header class="header">
       <div class="inner">
         <h1 class="logo">
@@ -52,31 +53,32 @@
             <li>
               <label for="navbar_trigger02">Quiz</label>
             </li>
+            <li>
+              <label for="navbar_trigger03">Journal</label>
+            </li>
           </ul>
         </nav>
       </div>
     </header>
-    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger01">
-    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger02">
-    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger03">
-    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger04">
-    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger05">
-    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger06">
-    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger07">
-    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger08">
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger01" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger02" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger03" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger04" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger05" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger06" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger07" />
+    <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger08" />
     <aside class="aside">
       <ul class="quiz_nav">
         <li>
           <label for="quiz_set_trigger01">1</label>
-          <input type="checkbox" id="edit_quiz_set_trigger">
+          <input type="checkbox" id="edit_quiz_set_trigger" />
           <article class="edit_quiz_set">
             <h3 class="blind">edit Quiz set</h3>
             <label for="edit_quiz_set_trigger">✖</label>
             <form action="/edit/quizSet">
-              <input type="text">
-              <button>
-                ➕
-              </button>
+              <input type="text" />
+              <button>➕</button>
             </form>
           </article>
           <a href="">🔼</a>
@@ -85,15 +87,13 @@
           <a href="">🔽</a>
         </li>
         <li>
-          <input type="checkbox" id="add_quiz_set-trigger">
+          <input type="checkbox" id="add_quiz_set-trigger" />
           <article class="add_quiz_set">
             <h3 class="blind">add Quiz set</h3>
             <label for="add_quiz_set-trigger">✖</label>
             <form action="/add/quizSet">
-              <input type="text">
-              <button>
-                ➕
-              </button>
+              <input type="text" />
+              <button>➕</button>
             </form>
           </article>
           <label for="add_quiz_set-trigger">➕</label>
@@ -105,57 +105,182 @@
         <section class="todolist">
           <h2 class="blind">todolist</h2>
           <article class="finish">
-            <h3>finished</h3>
+            <h3>finish</h3>
             <ul>
-              <li>
-                <span>fdafdsa</span>
-                <a href="">fdsafd</a>
+              <li
+                th:each="toDo : ${toDoList}"
+                th:if="${toDo.todoStatus.name() == 'FINISHED'}"
+              >
+                <span th:text="${toDo.sentence}">sentence</span>
+                <a th:href="@{'/toDo/return/' + ${toDo.id}}">RETURN</a>
               </li>
             </ul>
           </article>
           <article class="todo">
             <h3>todo</h3>
             <ul>
-              <li>
-                <span>fdsafdasfd</span>
-                <a href="">fdasfdasfd</a>
-                <a href="">fdasfd</a>
+              <li
+                th:each="toDo : ${toDoList}"
+                th:if="${toDo.todoStatus.name() == 'TODO'}"
+              >
+                <span th:text="${toDo.sentence}">sentence</span>
+                <a th:href="@{'/toDo/finish/' + ${toDo.id}}">FINISH</a>
+                <a th:href="@{'/toDo/delete/' + ${toDo.id}}">DELETE</a>
               </li>
             </ul>
-            <form action="/addToDOList">
-              <input type="text" />
+            <form action="/toDoList/add" method="post" th:Object="${toDoForm}">
+              <input type="text" th:field="*{sentence}" autocomplete="off" />
               <button>➕</button>
             </form>
           </article>
         </section>
         <section class="quiz">
-          <h2 class="blind">quiz</h2>
+          <h3 class="blind">quiz</h3>
           <div class="quiz_swipper_container">
-              <article class="quiz_swipper">
-                <h3>1</h3>
+            <article
+              class="quiz_swipper"
+              th:each="quizSet, info : ${quizSetList}"
+            >
+              <input
+                type="checkbox"
+                th:name="${'quiz_add_trigger' + quizSet.id}"
+                th:id="${'quiz_add_trigger' + quizSet.id}"
+              />
+              <article class="quiz_add">
+                <h5 class="blind">문제 추가하기</h5>
+                <form
+                  th:action="@{'/quizSet/' + ${quizSet.id} + '/quiz/add'}"
+                  method="post"
+                  th:Object="${quizForm}"
+                >
+                  <button>➕</button>
+                  <input
+                    type="text"
+                    th:field="*{quiz}"
+                    placeholder="문제"
+                    autocomplete="off"
+                  />
+                  <input
+                    type="text"
+                    th:field="*{answer}"
+                    placeholder="답"
+                    autocomplete="off"
+                  />
+                </form>
+                <label th:for="${'quiz_add_trigger' + quizSet.id }">▼</label>
               </article>
-              <article class="quiz_swipper">
-                <h3>2</h3>
-              </article>
-              <article class="quiz_swipper">
-                <h3>3</h3>
-              </article>
-              <article class="quiz_swipper">
-                <h3>4</h3>
-              </article>
-              <article class="quiz_swipper">
-                <h3>5</h3>
-              </article>
-              <article class="quiz_swipper">
-                <h3>6</h3>
-              </article>
-              <article class="quiz_swipper">
-                <h3>7</h3>
-              </article>
-              <article class="quiz_swipper">
-                <h3>8</h3>
-              </article>
+              <h4 class="blind" th:text="${quizSet.name}">quizSetName</h4>
+              <div th:class=" 'swiper ' + ${ 'quiz_swiper' + info.index}">
+                <div class="swiper-wrapper">
+                  <div
+                    class="swiper-slide"
+                    th:each="quiz : ${quizSet.getQuizList()}"
+                  >
+                    <a
+                      class="quiz_delete"
+                      th:href="@{'/quiz/delete/' + ${quiz.id}}"
+                      >×</a
+                    >
+                    <h5 th:text="${quiz.quiz}">문제</h5>
+                    <p class="blind" th:text="${quiz.answer}">답</p>
+                    <form class="answer-check">
+                      <input type="text" placeholder="답" autocomplete="off" />
+                      <button>❔</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="swiper-pagination"></div>
+              </div>
+              <input
+                type="range"
+                th:name=" 'quiz_gage_pagination' + ${quizSet.id}"
+                th:id=" 'quiz_gage_pagination' + ${quizSet.id}"
+                min="0"
+                th:max="${quizSet.getQuizList().size()-1}"
+                value="0"
+              />
+            </article>
           </div>
+        </section>
+        <section class="journal">
+          <h2 class="blind">Journal</h2>
+          <input
+            type="checkbox"
+            name="add_journal_trigger"
+            id="add_journal_trigger"
+          />
+          <article class="add_journal">
+            <h3 class="blind">add_journal</h3>
+            <label for="add_journal_trigger">×</label>
+            <form action="">
+              <input type="text" name="title" />
+              <textarea name="" id="" cols="30" rows="10"></textarea>
+              <button>PUSH</button>
+            </form>
+          </article>
+          <ul class="journal_header">
+            <li>
+              <select name="journal_year" id="journal_year">
+                <option value="all">year</option>
+                <option value="2020">2020</option>
+              </select>
+            </li>
+            <li>
+              <select name="journal_month" id="journal_month">
+                <option value="all">month</option>
+                <option value="2016">2016</option>
+              </select>
+            </li>
+            <li>
+              <select name="journal_date" id="journal_date">
+                <option value="all">date</option>
+                <option value="2016">2016</option>
+              </select>
+            </li>
+            <li>
+              <select name="journal_day" id="journal_day">
+                <option value="all">day</option>
+                <option value="0">일</option>
+                <option value="1">월</option>
+                <option value="2">화</option>
+                <option value="3">수</option>
+                <option value="4">목</option>
+                <option value="5">금</option>
+                <option value="6">토</option>
+              </select>
+            </li>
+            <li>
+              <label class="add_journal_trigger" for="add_journal_trigger"
+                >Write</label
+              >
+            </li>
+          </ul>
+          <input
+            type="radio"
+            name="journal_detail_trigger"
+            id="journal_detail_trigger_close"
+          />
+          <ul class="journal_body">
+            <li>
+              <label for="journal_detail_trigger1">
+                <time datetime="">0000년 00월 00일 0요일</time>
+                <h3>title</h3>
+                <a href="journal_trigger1">delete</a>
+                <input
+                  type="radio"
+                  name="journal_detail_trigger"
+                  id="journal_detail_trigger1"
+                />
+                <label class="journal_detail" for="journal_detail_trigger_close">
+                  <div class="inner">
+                    <time datetime="">0000년 00월 00일 0요일</time>
+                    <h4>title</h4>
+                    <p>detail</p>
+                  </div>
+                </label>
+              </label>
+            </li>
+          </ul>
         </section>
       </div>
     </main>

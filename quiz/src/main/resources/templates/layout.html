@@ -5,6 +5,7 @@
     <th:block th:if="${session.login}">
       <input type="radio" name="navbar_trigger" id="navbar_trigger01" />
       <input type="radio" name="navbar_trigger" id="navbar_trigger02" />
+      <input type="radio" name="navbar_trigger" id="navbar_trigger03" />
     </th:block>
     <header th:replace="fragments/header :: header" />
 
@@ -29,16 +30,6 @@
               fetch("/message_reset", {
                 method: "GET",
               });
-          }
-          const navbarCheck = [[${session.navbarCheck}]];
-          if(navbarCheck != null){
-              const navbarInput = document.querySelectorAll("input[name='navbar_trigger']");
-              navbarInput[navbarCheck].checked = true;
-          }
-          const quizSetCheck = [[${session.quizSetCheck}]];
-          if(quizSetCheck != null){
-              const quizSetInput = document.querySelectorAll("input[name*='quiz_set_trigger']");
-              quizSetInput[quizSetCheck].checked = true;
           }
       }
     </script>

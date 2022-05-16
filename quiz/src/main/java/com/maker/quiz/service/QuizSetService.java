@@ -17,7 +17,6 @@ import java.util.List;
 public class QuizSetService {
     private final QuizSetRepository quizSetRepository;
     private final QuizService quizService;
-    private final MemberService memberService;
 
     @Transactional
     public Long saveQuizSet(QuizSet quizSet){
