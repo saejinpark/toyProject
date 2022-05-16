@@ -490,9 +490,10 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
   margin-top: 20px;
 }
 
-/* input[name="journa_detail_trigger"] {
+input[name="journal_detail_trigger"] {
   display: none;
-} */
+}
+ 
 .journal .journal_body li label {
   display: block;
   background-color: #353b48;
