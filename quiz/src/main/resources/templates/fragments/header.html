@@ -11,7 +11,7 @@
             <a href="/logout">LOGOUT</a>
           </li>
           <li>
-            <a href="/delete">DELETE</a>
+            <a th:href="@{'/delete/' + ${session.member}}">DELETE</a>
           </li>
         </ul>
         <nav class="navbar">

@@ -1,12 +1,7 @@
 package com.maker.quiz.controller;
-import com.maker.quiz.dto.QuizForm;
-import com.maker.quiz.dto.QuizSetForm;
-import com.maker.quiz.dto.ToDoForm;
+import com.maker.quiz.dto.*;
 import com.maker.quiz.entity.*;
-import com.maker.quiz.service.MemberService;
-import com.maker.quiz.service.QuizService;
-import com.maker.quiz.service.QuizSetService;
-import com.maker.quiz.service.ToDoService;
+import com.maker.quiz.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 
@@ -27,9 +23,15 @@ public class MainController {
     private final ToDoService toDoService;
     private final QuizSetService quizSetService;
     private final QuizService quizService;
+    private final JournalService journalService;
 
     @GetMapping("/")
-    public String getMain(HttpServletRequest request, Model model, ToDoForm toDoForm, QuizSetForm quizSetForm, QuizForm quizForm) {
+    public String getMain(
+            HttpServletRequest request,
+            Model model, ToDoForm toDoForm,
+            QuizSetForm quizSetForm, QuizForm quizForm,
+            JournalForm journalForm
+    ) {
         HttpSession session = request.getSession();
         if (session.getAttribute("login") == null){
             return "redirect:/login";
@@ -38,16 +40,21 @@ public class MainController {
         model.addAttribute("page", "main");
         model.addAttribute("toDoList", member.getToDoList());
         model.addAttribute("quizSetList", member.getQuizSetList());
+        model.addAttribute("journalList", member.getJournalList());
         model.addAttribute("toDoForm", toDoForm);
         model.addAttribute("quizSetForm", quizSetForm);
         model.addAttribute("quizForm", quizForm);
+        model.addAttribute("journalForm", journalForm);
+        model.addAttribute("yearList", member.getJournalYearList());
+        model.addAttribute("monthList", member.getJournalMonthList());
+        model.addAttribute("dateList", member.getJournalDateList());
+        model.addAttribute("dayList", member.getJournalDayList());
         return "layout";
     }
 
-    @GetMapping("/delete")
-    public String deleteMember(HttpServletRequest request){
-        HttpSession session = request.getSession();
-        Member member = memberService.findOne((String) session.getAttribute("member"));
+    @GetMapping("/delete/{memberId}")
+    public String deleteMember(@PathVariable String memberId){
+        Member member = memberService.findOne(memberId);
         memberService.deleteMember(member);
         return "redirect:/logout";
     }
@@ -164,4 +171,24 @@ public class MainController {
         return "redirect:/";
     }
 
+    @PostMapping("/journal/add")
+    public String journalAdd(HttpServletRequest request, JournalForm journalForm){
+        HttpSession session = request.getSession();
+        Member member = memberService.findOne((String) session.getAttribute("member"));
+        Journal journal = new Journal();
+        journal.setTitle(journalForm.getTitle());
+        journal.setDetail(journalForm.getDetail());
+        journal.setGeneratedTime(new Date());
+        journal.setMember(member);
+        journalService.saveJournal(journal);
+        return "redirect:/";
+    }
+
+
+    @GetMapping("/journal/delete/{journalId}")
+    public String journalDelete(@PathVariable Long journalId){
+        Journal journal = journalService.findJournal(journalId);
+        journalService.deleteJournal(journal);
+        return "redirect:/";
+    }
 }

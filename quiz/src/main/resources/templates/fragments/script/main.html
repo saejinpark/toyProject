@@ -21,6 +21,8 @@
               const quizSetInput = document.querySelectorAll("input[name*='quiz_set_trigger']");
               quizSetInput[quizSetCheck].checked = true;
           }
+          const journalBody = document.querySelector(".journal_body");
+          journalBody.scrollTop = journalBody.scrollHeight
       }
     </script>
     <script th:inline="javascript">
@@ -81,7 +83,7 @@
               );
               const gageEventHandler = (e) => {
                 const value = e.target.value;
-                console.log(value)
+                console.log(value);
                 quizSwiperObject[swiperKey].slideTo(value, 0);
               };
               gage.addEventListener("mouseup", gageEventHandler);
@@ -116,6 +118,37 @@
         }
       }
       setQuizSwiper();
+
+      function journalSearchSelectHandler() {
+        const journalBody = document.querySelector(".journal_body");
+        const selectJournalYear = document.getElementById("journal_year");
+        const selectJournalMonth = document.getElementById("journal_month");
+        const selectJournalDate = document.getElementById("journal_date");
+        const selectJournalDay = document.getElementById("journal_day");
+        journalBody.querySelectorAll("li").forEach((li) => {
+          li.hidden = false;
+          if (selectJournalYear.value != "year") {
+            if (selectJournalYear.value != li.dataset.year) {
+              li.hidden = true;
+            }
+          }
+          if (selectJournalMonth.value != "month") {
+            if (selectJournalMonth.value != li.dataset.month) {
+              li.hidden = true;
+            }
+          }
+          if (selectJournalDate.value != "date") {
+            if (selectJournalDate.value != li.dataset.date) {
+              li.hidden = true;
+            }
+          }
+          if (selectJournalDay.value != "day") {
+            if (selectJournalDay.value != li.dataset.day) {
+              li.hidden = true;
+            }
+          }
+        });
+      }
     </script>
   </th:block>
 </html>

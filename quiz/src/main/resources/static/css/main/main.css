@@ -23,7 +23,7 @@
 }
 
 .todolist article ul {
-  height: 75%;
+  height: 70%;
   margin-bottom: 10%;
   overflow: scroll;
 }
@@ -376,6 +376,7 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
   width: 100%;
   height: 100%;
   padding: 20px;
+  padding-left: 50px;
   display: none;
   position: relative;
 }
@@ -388,8 +389,8 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
   display: none;
 }
 .journal .journal_header {
-  height: 5%;
-  margin-bottom: 1%;
+  height: 6%;
+  margin-bottom: 2%;
   overflow: hidden;
   float: right;
 }
@@ -442,7 +443,7 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
   top: 8px;
   right: 15px;
   font-size: 34px;
-  color: #f5f6fa;
+  color: blanchedalmond;
 }
 
 .journal .add_journal form {
@@ -450,42 +451,67 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
   height: 100%;
 }
 .journal .add_journal form input,
+.journal .add_journal form textarea {
+  font-family: "나눔손글씨_성실체";
+  outline: 0;
+}
+.journal .add_journal form input,
 .journal .add_journal form textarea,
 .journal .add_journal form button {
   display: block;
   width: 100%;
+  border: 0;
+  padding: 0 20px;
 }
 .journal .add_journal form input {
-  font-size: 34px;
+  font-size: 40px;
   font-weight: 700;
-  height: 10%;
+  height: 12%;
 }
 
 .journal .add_journal form textarea {
   font-size: 28px;
   font-weight: 700;
   resize: none;
-  height: 80%;
+  height: 78%;
 }
 
 .journal .add_journal form button {
   font-size: 24px;
   font-weight: 700;
   height: 10%;
+  border: 1px solid #192a56;
   background-color: #192a56;
   color: #f5f6fa;
 }
 
 #add_journal_trigger:checked + .add_journal {
   display: block;
+  z-index: 2;
 }
 
 .journal .journal_body {
   width: 100%;
   clear: right;
-  height: 94%;
+  height: 85%;
   overflow-y: scroll;
+  font-family: "나눔손글씨_성실체";
 }
+
+.journal .journal_body::-webkit-scrollbar {
+  width: 3px;
+  background-color: #353b48;
+}
+
+.journal .journal_body::-webkit-scrollbar-track {
+  width: 3px;
+  background-color: white;
+}
+
+.journal .journal_body::-webkit-scrollbar-thumb {
+  background-color: #353b48;
+}
+
 .journal .journal_body li:nth-child(n + 2) {
   margin-top: 20px;
 }
@@ -493,16 +519,42 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
 input[name="journal_detail_trigger"] {
   display: none;
 }
- 
+
+.journal .journal_body li {
+  width: 98%;
+}
+
 .journal .journal_body li label {
+  position: relative;
   display: block;
   background-color: #353b48;
   color: #f5f6fa;
   padding: 50px;
 }
 
+.journal .journal_body li:nth-child(2n) label {
+  color: #353b48;
+  background-color: #f5f6fa;
+}
+
 .journal .journal_body li label h3 {
   font-size: 34px;
+  margin-top: 10px;
+}
+
+.journal .journal_body li label .journal_delete {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  opacity: 0;
+}
+
+.journal .journal_body li label:hover .journal_delete {
+  opacity: 1;
+}
+
+.journal .journal_body li label time {
+  opacity: 0.8;
 }
 
 .journal .journal_body li label .journal_detail {
@@ -531,16 +583,22 @@ input[name="journal_detail_trigger"] {
 
 .journal .journal_body li label .journal_detail .inner time {
   font-size: 18px;
+  float: right;
+  opacity: 1;
+  margin-bottom: 20px;
 }
 
 .journal .journal_body li label .journal_detail .inner h4 {
-  font-size: 40px;
-  padding: 30px 10px 15px;
+  font-size: 48px;
+  margin-bottom: 30px;
+  clear: right;
+  font-weight: 700;
 }
 
 .journal .journal_body li label .journal_detail .inner p {
-  font-size: 24px;
-  padding: 15px;
+  font-size: 34px;
+  line-height: 1;
+  word-wrap: break-word;
 }
 
 .journal_body input[name="journal_detail_trigger"]:checked + .journal_detail {

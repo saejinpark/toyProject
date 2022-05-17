@@ -1,5 +1,6 @@
 package com.maker.quiz.service;
 
+import com.maker.quiz.entity.Journal;
 import com.maker.quiz.entity.Member;
 import com.maker.quiz.entity.QuizSet;
 import com.maker.quiz.entity.ToDo;
@@ -8,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -15,9 +17,9 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
     private final MemberRepository memberRepository;
-    private final QuizSetService quizSetService;
     private final ToDoService toDoService;
-    private final QuizService quizService;
+    private final QuizSetService quizSetService;
+    private final JournalService journalService;
 
     @Transactional
     public String saveMember(Member member){
@@ -53,8 +55,12 @@ public class MemberService {
         for(ToDo toDo :member.getToDoList()){
             toDoService.deleteToDo(toDo);
         }
-        for(QuizSet quizSet : member.getQuizSetList()){
-            quizSetService.deleteQuizSet(quizSet);
+        List<QuizSet> quizSetList = member.getQuizSetList();
+        while(quizSetList.size() != 0){
+            quizSetService.deleteQuizSet(quizSetList.get(0));
+        }
+        for(Journal journal : member.getJournalList()){
+            journalService.deleteJournal(journal);
         }
         memberRepository.delete(member);
         return deletedMemberId;

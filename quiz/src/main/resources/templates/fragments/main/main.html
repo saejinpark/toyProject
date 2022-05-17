@@ -112,41 +112,84 @@
         <article class="add_journal">
           <h3 class="blind">add_journal</h3>
           <label for="add_journal_trigger">×</label>
-          <form action="">
-            <input type="text" name="title" />
-            <textarea name="" id="" cols="30" rows="10"></textarea>
+          <form action="/journal/add" method="post" th:Object="${journalForm}">
+            <input type="text" th:field="*{title}" placeholder="제목" />
+            <textarea
+              th:field="*{detail}"
+              cols="30"
+              rows="10"
+              placeholder="내용"
+            ></textarea>
             <button>PUSH</button>
           </form>
         </article>
         <ul class="journal_header">
           <li>
-            <select name="journal_year" id="journal_year">
-              <option value="all">year</option>
-              <option value="2020">2020</option>
+            <select
+              name="journal_year"
+              id="journal_year"
+              onchange="journalSearchSelectHandler()"
+            >
+              <option value="year">year</option>
+              <option value="test">test</option>
+              <option
+                th:each="year : ${yearList}"
+                th:value="${year}"
+                th:text="${year}"
+              >
+                year
+              </option>
             </select>
           </li>
           <li>
-            <select name="journal_month" id="journal_month">
-              <option value="all">month</option>
-              <option value="2016">2016</option>
+            <select
+              name="journal_month"
+              id="journal_month"
+              onchange="journalSearchSelectHandler()"
+            >
+              <option value="month">month</option>
+              <option value="test">test</option>
+              <option
+                th:each="month : ${monthList}"
+                th:value="${month}"
+                th:text="${month}"
+              >
+                month
+              </option>
             </select>
           </li>
           <li>
-            <select name="journal_date" id="journal_date">
-              <option value="all">date</option>
-              <option value="2016">2016</option>
+            <select
+              name="journal_date"
+              id="journal_date"
+              onchange="journalSearchSelectHandler()"
+            >
+              <option value="date">date</option>
+              <option value="test">test</option>
+              <option
+                th:each="date : ${dateList}"
+                th:value="${date}"
+                th:text="${date}"
+              >
+                date
+              </option>
             </select>
           </li>
           <li>
-            <select name="journal_day" id="journal_day">
-              <option value="all">day</option>
-              <option value="0">일</option>
-              <option value="1">월</option>
-              <option value="2">화</option>
-              <option value="3">수</option>
-              <option value="4">목</option>
-              <option value="5">금</option>
-              <option value="6">토</option>
+            <select
+              name="journal_day"
+              id="journal_day"
+              onchange="journalSearchSelectHandler()"
+            >
+              <option value="day">day</option>
+              <option value="test">test</option>
+              <option
+                th:each="day : ${dayList}"
+                th:value="${day}"
+                th:text="${day}"
+              >
+                day
+              </option>
             </select>
           </li>
           <li>
@@ -161,21 +204,40 @@
           id="journal_detail_trigger_close"
         />
         <ul class="journal_body">
-          <li>
-            <label for="journal_detail_trigger1">
-              <time datetime="">0000년 00월 00일 0요일</time>
-              <h3>title</h3>
-              <a href="journal_trigger1">delete</a>
+          <li
+            th:each="journal, info : ${journalList}"
+            th:attr="
+              data-year=${journal.getGeneratedYear()},
+              data-month=${journal.getGeneratedMonth()},
+              data-date=${journal.getGeneratedDate()},
+              data-day=${journal.getGeneratedDay()}"
+          >
+            <label th:for="${'journal_detail_trigger' + info.index}">
+              <time
+                th:datetime="${journal.generatedTime}"
+                th:text="${journal.getTimeText()}"
+                >0000년 00월 00일 0요일</time
+              >
+              <h3 th:text="${journal.title}">title</h3>
+              <a
+                class="journal_delete"
+                th:href="@{'/journal/delete/' + ${journal.id}}"
+                >×</a
+              >
               <input
                 type="radio"
                 name="journal_detail_trigger"
-                id="journal_detail_trigger1"
+                th:id="${'journal_detail_trigger' + info.index}"
               />
               <label class="journal_detail" for="journal_detail_trigger_close">
                 <div class="inner">
-                  <time datetime="">0000년 00월 00일 0요일</time>
-                  <h4>title</h4>
-                  <p>detail</p>
+                  <time
+                    th:datetime="${journal.generatedTime}"
+                    th:text="${journal.getTimeText()}"
+                    >0000년 00월 00일 0요일</time
+                  >
+                  <h4 th:text="${journal.title}">title</h4>
+                  <p th:text="${journal.detail}">detail</p>
                 </div>
               </label>
             </label>

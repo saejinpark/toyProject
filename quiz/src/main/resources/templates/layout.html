@@ -20,7 +20,12 @@
     <aside th:replace="fragments/aside :: aside" />
     <main th:replace="( 'fragments/main/' + ${page} ) :: main" />
     <footer th:replace="fragments/footer :: footer" />
-
+    <article class="loading">
+      <h2 class="blind">loading</h2>
+      <figure>
+        <figcaption class="blind">로딩</figcaption>
+      </figure>
+    </article>
     <script src="/js/sweetalert.min.js"></script>
     <script th:inline="javascript">
       window.onload = () => {
@@ -34,9 +39,9 @@
       }
     </script>
     <th:block th:replace="( 'fragments/script/' + ${page} ) :: script" />
-    <!--    <script defer>-->
-    <!--      const loading = document.querySelector(".loading");-->
-    <!--      loading.classList.add("blind");-->
-    <!--    </script>-->
+    <script defer>
+      const loading = document.querySelector(".loading");
+      loading.classList.add("blind");
+    </script>
   </body>
 </html>
