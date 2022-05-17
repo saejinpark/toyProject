@@ -5,16 +5,16 @@
       <form action="/join" method="post" class="form" th:Object="${joinForm}">
         <fieldset>
           <legend>회원가입</legend>
-          <fieldset>
-            <legend>사용하실 아이디를 입력해주세요.</legend>
+          <fieldset class="id_field">
+            <legend>아이디</legend>
             <input type="text" th:field="*{id}"  autocomplete="off" />
           </fieldset>
-          <fieldset>
-            <legend>사용하실 비밀번호를 입력해주세요.</legend>
+          <fieldset class="password_field">
+            <legend>비밀번호</legend>
             <input type="password" th:field="*{password}"  autocomplete="off"  />
           </fieldset>
-          <fieldset>
-            <legend>이름을 알려주세요.</legend>
+          <fieldset class="name_field">
+            <legend>이름</legend>
             <input type="text" th:field="*{name}" autocomplete="off"  />
           </fieldset>
           <button>회원가입</button>
