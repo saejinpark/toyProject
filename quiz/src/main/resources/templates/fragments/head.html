@@ -14,12 +14,13 @@
     <link href="/css/reset.css" rel="stylesheet" />
     <link href="/css/global.css" rel="stylesheet" />
     <link href="/css/header.css" rel="stylesheet" />
-    <link href="/css/aside.css" rel="stylesheet" />
     <link th:href=" '/css/main/' + ${page}  + '.css' " rel="stylesheet" />
-    <link href="/css/footer.css" rel="stylesheet" />
-    <title th:text="'Quiz Maker | ' + ${page} ">title</title>
     <th:block th:if="${session.login}">
+      <link href="/css/aside.css" rel="stylesheet" />
+      <link href="/css/rightAside.css" rel="stylesheet" />
       <link rel="stylesheet" href="/css/swiper-bundle.min.css" />
     </th:block>
+    <link href="/css/footer.css" rel="stylesheet" />
+    <title th:text="'Quiz Maker | ' + ${page} ">title</title>
   </head>
 </html>

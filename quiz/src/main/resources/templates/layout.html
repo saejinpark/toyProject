@@ -5,10 +5,9 @@
     <th:block th:if="${session.login}">
       <input type="radio" name="navbar_trigger" id="navbar_trigger01" />
       <input type="radio" name="navbar_trigger" id="navbar_trigger02" />
-      <input type="radio" name="navbar_trigger" id="navbar_trigger03" />
+      <input type="radio" name="navbar_trigger" id="navbar_trigger03" onchange="journalBodyScrollToBottom()"/>
     </th:block>
     <header th:replace="fragments/header :: header" />
-
     <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger01" />
     <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger02" />
     <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger03" />
@@ -19,6 +18,7 @@
     <input type="radio" name="quiz_set_trigger" id="quiz_set_trigger08" />
     <aside th:replace="fragments/aside :: aside" />
     <main th:replace="( 'fragments/main/' + ${page} ) :: main" />
+    <aside th:replace="fragments/rightAside :: aside" />
     <footer th:replace="fragments/footer :: footer" />
     <article class="loading">
       <h2 class="blind">loading</h2>

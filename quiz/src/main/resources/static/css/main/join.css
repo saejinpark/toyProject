@@ -3,15 +3,21 @@
   height: 100vh;
 }
 
+.main .inner {
+  width: 40%;
+  min-height: 594px;
+  min-width: 660px;
+}
+
 .main .form {
   display: block;
   height: 100%;
   padding: 30px 30px 0;
-  background-color: #718093;
+  background-color: #353b48;
+  border: 1px solid black;
 }
 
 .main .form fieldset {
-  background-color: #f5f6fa;
   padding: 30px;
   width: 100%;
   clear: left;
@@ -20,8 +26,8 @@
 .main .form fieldset legend {
   font-weight: 700;
   padding-bottom: 30px;
-  font-size: 28px;
-  background-color: #f5f6fa;
+  font-size: 34px;
+  color: white;
   float: left;
 }
 
@@ -29,14 +35,16 @@
 .main .form fieldset .password_field,
 .main .form fieldset .name_field {
   padding: 15px;
-  background-color: #dcdde1;
+  border: 5px solid white;
+  border-style: inset;
+  background-color: #192a56;
 }
 
 .main .form fieldset .id_field legend,
 .main .form fieldset .password_field legend,
 .main .form fieldset .name_field legend {
   padding: 0 0px 15px;
-  background-color: #dcdde1;
+  color: white;
   font-size: 18px;
 }
 
@@ -48,7 +56,7 @@
 }
 
 .main .form fieldset fieldset:nth-child(n + 3) {
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 .main .form fieldset input {
@@ -57,11 +65,12 @@
   border: 0;
   padding: 10px 15px;
   width: 100%;
+  border: 1px solid black;
 }
 
 .main .form button {
-  margin-top: 30px;
-  border: 2px solid #192a56;
+  border: 5px solid;
+  margin-top: 40px;
   font-weight: 600;
   display: block;
   float: left;
@@ -70,16 +79,15 @@
   width: 100%;
   text-align: center;
   line-height: 1.5;
-  color: #f5f6fa;
-  background-color: #192a56;
   transition: background 100ms;
+  border-style: outset;
+}
+
+.main .form button:hover {
+  border-style: inset;
+  background-color: #dcdde1;
 }
 
 .main .form a {
   margin-left: 4%;
-}
-
-.main .form button:hover {
-  color: #192a56;
-  background-color: white;
 }

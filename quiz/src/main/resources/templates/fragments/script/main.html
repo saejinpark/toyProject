@@ -21,11 +21,14 @@
               const quizSetInput = document.querySelectorAll("input[name*='quiz_set_trigger']");
               quizSetInput[quizSetCheck].checked = true;
           }
+          journalBodyScrollToBottom()
+      }
+
+      function journalBodyScrollToBottom() {
           const journalBody = document.querySelector(".journal_body");
           journalBody.scrollTop = journalBody.scrollHeight
       }
-    </script>
-    <script th:inline="javascript">
+      journalBodyScrollToBottom()
       function setNavbar() {
         const navbarLabel = document.querySelectorAll(
           "label[for*='navbar_trigger']"
@@ -70,6 +73,23 @@
           const swiper = document.querySelector("." + swiperKey);
           const answerCheck = swiper.querySelectorAll(".answer-check");
           answerCheck.forEach((element, index) => {
+            const quizSetArticle = swiper.parentNode;
+            const gage = quizSetArticle.querySelector(
+              "input[id*='quiz_gage_pagination']"
+            );
+            const gageEventHandler = (e) => {
+              const value = e.target.value;
+              quizSwiperObject[swiperKey].slideTo(value, 0);
+            };
+            gage.addEventListener("mouseup", gageEventHandler);
+            gage.addEventListener("mousedown", gageEventHandler);
+            gage.addEventListener("mousemove", gageEventHandler);
+            gage.addEventListener("pointerup", gageEventHandler);
+            gage.addEventListener("pointerdown", gageEventHandler);
+            gage.addEventListener("pointermove", gageEventHandler);
+            gage.addEventListener("dragend", gageEventHandler);
+            gage.addEventListener("dragleave", gageEventHandler);
+
             element.addEventListener("submit", (e) => {
               e.preventDefault();
               const slide = element.parentNode;
@@ -77,29 +97,14 @@
               const input = element.querySelector("input");
               const submitAnswer = input.value;
               input.value = "";
-              const quizSetArticle = swiper.parentNode;
-              const gage = quizSetArticle.querySelector(
-                "input[id*='quiz_gage_pagination']"
-              );
-              const gageEventHandler = (e) => {
-                const value = e.target.value;
-                console.log(value);
-                quizSwiperObject[swiperKey].slideTo(value, 0);
-              };
-              gage.addEventListener("mouseup", gageEventHandler);
-              gage.addEventListener("mousedown", gageEventHandler);
-              gage.addEventListener("mousemove", gageEventHandler);
-              gage.addEventListener("pointerup", gageEventHandler);
-              gage.addEventListener("pointerdown", gageEventHandler);
-              gage.addEventListener("pointermove", gageEventHandler);
-              gage.addEventListener("dragend", gageEventHandler);
-              gage.addEventListener("dragleave", gageEventHandler);
               if (answer === submitAnswer) {
                 if (index + 1 < answerCheck.length) {
                   quizSwiperObject[swiperKey].slideTo(index + 1, 0);
                   const nextForm = answerCheck[index + 1];
                   const nextInput = nextForm.querySelector("input");
                   gage.value = Number(gage.value) + 1;
+                  const rightAside = document.querySelector(".right_aside");
+                  rightAside.innerHTML = '<h3 class="blind">right aside</h3>';
                   nextInput.focus();
                 } else {
                   alert("수고하셨습니다.");
@@ -111,6 +116,31 @@
                 }
               } else {
                 alert(` 정답은 '${answer}' 입니다.`);
+                fetch("/naver/search/encyc/" + answer, {
+                    method: "GET",
+                }).then((response) => response.json())
+                .then((data) => {
+                  const result = data.items[0];
+                  const rightAside = document.querySelector(".right_aside");
+                  const title = result.title;
+                  const thumbnail = result.thumbnail;
+                  let description = result.description.split("다.")[0];
+                  if(!description.includes('...')){
+                    description += "다."
+                  }
+                  const link =  result.link
+                  rightAside.innerHTML =
+                    `
+                      <h2 class="blind">right aside</h2>
+                      <article>
+                        <h3>${title}</h3>
+                        ${ thumbnail != "" ? `<figure><img src="${thumbnail}" alt="" /><figcaption class="blind">${answer + "이미지"}</figcaption></figure>` : ''}
+                        <p>${description}</p>
+                        <a href="${link}" target="_blank">link</a>
+                      </article>
+                    `
+                });
+
                 input.focus();
               }
             });

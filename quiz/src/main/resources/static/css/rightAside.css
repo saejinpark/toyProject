@@ -1,0 +1,55 @@
+.right_aside {
+  position: fixed;
+  width: 250px;
+  top: 20vh;
+  bottom: 15vh;
+  left: calc(50vw + 512px);
+  background-color: #dcdde1;
+  color: black;
+  padding: 30px 15px;
+  display: none;
+  z-index: 2;
+  border: 1px solid black;
+}
+
+input#navbar_trigger02:checked ~ .right_aside {
+  display: block;
+}
+
+.right_aside article h3 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 30px;
+}
+
+.right_aside article figure {
+  width: 60%;
+  margin-bottom: 15px;
+}
+
+.right_aside article figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.right_aside article p {
+  line-height: 1.5;
+  font-size: 18px;
+}
+
+.right_aside article p b {
+  font-weight: 700;
+}
+
+.right_aside article a {
+  position: absolute;
+  bottom: 15px;
+  width: calc(100% - 30px);
+  display: block;
+  padding: 15px 30px;
+  background-color: #353b48;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+}

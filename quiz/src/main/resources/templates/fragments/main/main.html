@@ -35,7 +35,7 @@
         </article>
       </section>
       <section class="quiz">
-        <h3 class="blind">quiz</h3>
+        <h2 class="blind">quiz</h2>
         <div class="quiz_swipper_container">
           <article
             class="quiz_swipper"
@@ -47,7 +47,7 @@
               th:id="${'quiz_add_trigger' + quizSet.id}"
             />
             <article class="quiz_add">
-              <h5 class="blind">문제 추가하기</h5>
+              <h3 class="blind">문제 추가하기</h3>
               <form
                 th:action="@{'/quizSet/' + ${quizSet.id} + '/quiz/add'}"
                 method="post"
@@ -69,7 +69,7 @@
               </form>
               <label th:for="${'quiz_add_trigger' + quizSet.id }">▼</label>
             </article>
-            <h4 class="blind" th:text="${quizSet.name}">quizSetName</h4>
+            <h3 class="blind" th:text="${quizSet.name}">quizSetName</h3>
             <div th:class=" 'swiper ' + ${ 'quiz_swiper' + info.index}">
               <div class="swiper-wrapper">
                 <div
@@ -81,7 +81,7 @@
                     th:href="@{'/quiz/delete/' + ${quiz.id}}"
                     >×</a
                   >
-                  <h5 th:text="${quiz.quiz}">문제</h5>
+                  <h4 th:text="${quiz.quiz}">문제</h4>
                   <p class="blind" th:text="${quiz.answer}">답</p>
                   <form class="answer-check">
                     <input type="text" placeholder="답" autocomplete="off" />

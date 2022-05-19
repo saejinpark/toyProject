@@ -4,20 +4,20 @@
     <div class="inner">
       <form action="/join" method="post" class="form" th:Object="${joinForm}">
         <fieldset>
-          <legend>회원가입</legend>
+          <legend>JOIN</legend>
           <fieldset class="id_field">
-            <legend>아이디</legend>
-            <input type="text" th:field="*{id}"  autocomplete="off" />
+            <legend>ID</legend>
+            <input type="text" th:field="*{id}" autocomplete="off" />
           </fieldset>
           <fieldset class="password_field">
-            <legend>비밀번호</legend>
-            <input type="password" th:field="*{password}"  autocomplete="off"  />
+            <legend>Password</legend>
+            <input type="password" th:field="*{password}" autocomplete="off" />
           </fieldset>
           <fieldset class="name_field">
-            <legend>이름</legend>
-            <input type="text" th:field="*{name}" autocomplete="off"  />
+            <legend>Name</legend>
+            <input type="text" th:field="*{name}" autocomplete="off" />
           </fieldset>
-          <button>회원가입</button>
+          <button>Submit</button>
         </fieldset>
       </form>
     </div>

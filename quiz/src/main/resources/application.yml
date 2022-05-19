@@ -14,3 +14,8 @@ spring:
 logging.level:
   org.hibernate.SQL: debug
 # org.hibernate.type: trace
+naver:
+  api:
+    search:
+      clientId: dkB9fHIUnPwR9FVSBqky
+      clientSecret: qPa1vLRsTc

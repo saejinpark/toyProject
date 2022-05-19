@@ -68,6 +68,10 @@ a {
   clear: both;
 }
 
+input[name*="quiz_set_trigger"] {
+  display: none;
+}
+
 .loading {
   position: fixed;
   top: 0;

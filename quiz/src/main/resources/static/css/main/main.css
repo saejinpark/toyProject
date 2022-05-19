@@ -23,8 +23,8 @@
 }
 
 .todolist article ul {
-  height: 70%;
-  margin-bottom: 10%;
+  height: 74%;
+  margin-bottom: 8%;
   overflow: scroll;
 }
 .todolist article ul::-webkit-scrollbar {
@@ -122,6 +122,7 @@
 }
 
 .quiz {
+  border: 1px solid black;
   display: none;
   height: 100%;
   grid-template-columns: repeat(2, 1fr);
@@ -136,7 +137,7 @@
 .quiz .quiz_swipper_container {
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 20px;
 }
 
 .quiz .quiz_swipper_container .quiz_swipper {
@@ -308,14 +309,14 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
   position: absolute;
   top: 20px;
   right: 20px;
-  color: darkgray;
+  color: transparent;
 }
 
-.quiz_swipper .swiper-slide .quiz_delete:hover {
+.quiz_swipper .swiper-slide:hover .quiz_delete {
   color: black;
 }
 
-.quiz_swipper .swiper-slide h5 {
+.quiz_swipper .swiper-slide h4 {
   font-size: 34px;
   font-weight: 600;
   margin-bottom: 30px;
@@ -357,7 +358,7 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
 
 .quiz_swipper input[id^="quiz_gage_pagination"] {
   width: 100%;
-  margin: 2% 0;
+  margin-top: 2%;
   height: 6%;
   -webkit-appearance: none;
   overflow: hidden;
@@ -372,6 +373,7 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
 }
 
 .journal {
+  border: 1px solid black;
   background-color: #dcdde1;
   width: 100%;
   height: 100%;
@@ -493,7 +495,7 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
 .journal .journal_body {
   width: 100%;
   clear: right;
-  height: 85%;
+  height: 90%;
   overflow-y: scroll;
   font-family: "나눔손글씨_성실체";
 }
@@ -509,7 +511,7 @@ input[id^="quiz_add_trigger"]:checked ~ .quiz_add {
 }
 
 .journal .journal_body::-webkit-scrollbar-thumb {
-  background-color: #353b48;
+  background-color: #192a56;
 }
 
 .journal .journal_body li:nth-child(n + 2) {
