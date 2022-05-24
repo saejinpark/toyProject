@@ -2,8 +2,6 @@ package com.maker.quiz.controller;
 
 import com.maker.quiz.dto.LoginForm;
 import com.maker.quiz.entity.Member;
-import com.maker.quiz.entity.Quiz;
-import com.maker.quiz.entity.QuizSet;
 import com.maker.quiz.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -20,7 +18,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/login")
 @RequiredArgsConstructor
-public class LoginController {
+public class  LoginController {
     private final MemberService memberService;
 
     @GetMapping
