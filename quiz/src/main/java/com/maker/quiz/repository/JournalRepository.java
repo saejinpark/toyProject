@@ -12,6 +12,7 @@ public class JournalRepository {
     private final EntityManager em;
 
     public void save(Journal journal) {
+
         if(journal.getId() == null){
             em.persist(journal);
         }else {
